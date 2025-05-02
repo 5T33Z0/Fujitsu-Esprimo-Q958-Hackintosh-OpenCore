@@ -1,3 +1,5 @@
+🚧 WORK in PROGRESS
+
 # Fujitsu Esprimo Q958 Hackintosh OpenCore
 
 ![Fujitsu_Esprimo_Q958_front](https://github.com/user-attachments/assets/3fc086f2-1be3-4a90-83f9-efdc702d51d2)
