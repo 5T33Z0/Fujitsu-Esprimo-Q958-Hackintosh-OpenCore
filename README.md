@@ -23,7 +23,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 **Storage**     | 256 GB SATA SSD (Samsung 860 EVO)       
 **NIC**         | Intel® I219-LM (1 Gbit)
 **WiFi/BT**     | Intel® Wireless-AC 9260 160MHz
-**Sound**       | Realtek ALC71 (Layout-ID 16)
+**Sound**       | Realtek ALC671 (Layout-ID 16)
 **SMBIOS**      | `iMac19,1` 
 
 ## What works?
