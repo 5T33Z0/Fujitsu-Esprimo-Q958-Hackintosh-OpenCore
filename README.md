@@ -20,7 +20,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 **CPU**         | 9th Gen Intel® Core™ [i7-9700T](https://www.intel.com/content/www/us/en/products/sku/191048/intel-core-i79700t-processor-12m-cache-up-to-4-30-ghz/specifications.html) (Coffee Lake) 
 **GPU**         | Intel UHD Graphics 630 
 **RAM**         | 32 GB DDR4 
-**Storage**     | 256 GB SATA SSD (Samsung 860 EVO)       
+**Storage**     | WD Blue SN550 NVMe SSD       
 **NIC**         | Intel® I219-LM (1 Gbit)
 **WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz
 **Sound**       | Realtek ALC671 (Layout-ID 16)
