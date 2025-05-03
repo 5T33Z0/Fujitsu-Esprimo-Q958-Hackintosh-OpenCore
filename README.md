@@ -38,7 +38,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 - [x] SATA drive
 - [x] USB Portmapping (USB 2, USB 3.1, USB C). May need further refinement.
 - [x] Ethernet
-- [x] Audio
+- [x] Audio (Line-out, Headphone out, Mic, integrated speaker)
 - [x] WLAN
 - [x] Bluetooth
 
