@@ -37,13 +37,20 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 - [x] SATA drive
 - [x] USB Portmapping (USB 2, USB 3.1, USB C). May need further refinement.
 - [x] Ethernet
-- [x] Audio (Line-out, Headphone out, Mic, integrated speaker)
+- [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
 - [x] WLAN
 - [x] Bluetooth
 
 > [!IMPORTANT]
 > 
 > This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP)
+
+## Notable Features
+
+- 3D Globe in Apple Maps
+- Slimmed kext for the Intel AC 9260:
+  - AirportItlwm.kext (1,7 instead of 16, 1 MB)
+  - IntelBluetoothFirmware.kext (559 Kb instead of 11,5)
 
 ## Issues
 - [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs invesigation. Workaround: Disable Display sleep.
