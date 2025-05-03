@@ -48,7 +48,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 
 ## Issues
 
-- When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required
+- ~~When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required~~ &rarr; Switched to OC No ACPI Mod.
 
 ## BIOS Settings
 
