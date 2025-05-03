@@ -44,7 +44,10 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 
 > [!IMPORTANT]
 > 
-> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP).
+> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP):
+>
+> ![wifi](https://github.com/user-attachments/assets/e277214d-4ee1-43f2-b404-a00837d40c35)
+
 
 ## Issues
 
