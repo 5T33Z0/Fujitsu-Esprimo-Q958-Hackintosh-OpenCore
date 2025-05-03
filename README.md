@@ -46,8 +46,8 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 > This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP)
 
 ## Issues
-
-- ~~When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required~~ &rarr; Switched to OC No ACPI Mod.
+- [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs invesigation. Workaround: Disable Display sleep.
+- [x] ~~When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required~~ &rarr; Switched to OC No ACPI Mod.
 
 ## BIOS Settings
 
@@ -63,6 +63,19 @@ todo…
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
 - Enjoy
 
+## Post-Install
+
+todo…
+
+### Disable CFG Lock (optional)
+- From Bootmenu, select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
+- Follow the on-screen Instrutions to disable CFGLock (set it to `0`)
+- Quit the tool
+- Boot macOS
+- Mount EFI partition and open your `config.plist`
+- Disable Kernel Quirk `AppleXcpmCfgLock`
+- Save your config an reboot
+
 ## Credits
 - Acidanthera for the [**OpenCore**](https://github.com/acidanthera/OpenCorePkg) Bootloader
 - Dortania for [**OpenCore Legacy Patcher**](https://github.com/dortania/OpenCore-Legacy-Patcher)
@@ -70,3 +83,4 @@ todo…
 - CorpNewt for [**SSDTTime**](https://github.com/corpnewt/SSDTTime), [**MMIODevirt**](https://github.com/corpnewt/MmioDevirt), [**ProperTree**](https://github.com/corpnewt/ProperTree) and [**MountEFI**](https://github.com/corpnewt/MountEFI)
 - benbaker76 for [**Hackintool**](https://github.com/benbaker76/Hackintool) (and all users who contributed framebuffer patches for it because it was a pita to get the Display Ports working)
 - Unknown for [**USBToolBox**](https://github.com/USBToolBox/tool)
+- Brumbaer for `CFGLock.efi`
