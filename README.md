@@ -76,6 +76,12 @@ todo…
 - Disable Kernel Quirk `AppleXcpmCfgLock`
 - Save your config an reboot
 
+## Geeekbench 5 Results
+
+![gb5_sonoma](https://github.com/user-attachments/assets/88c6bd9b-4439-4b85-98e2-81dcdf675da9)
+
+**Full reseult**: [https://browser.geekbench.com/v5/cpu/23512366](https://browser.geekbench.com/v5/cpu/23512366)
+
 ## Credits
 - Acidanthera for the [**OpenCore**](https://github.com/acidanthera/OpenCorePkg) Bootloader
 - Dortania for [**OpenCore Legacy Patcher**](https://github.com/dortania/OpenCore-Legacy-Patcher)
