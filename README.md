@@ -74,7 +74,10 @@ todo…
 
 ## Post-Install
 
-todo…
+### Fix Sleep
+
+### Disable Gatekeeper (optional)
+I disable Gatekeeper on my systems because it is annoying and wants to stop you from running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekepper in macOS Sequoia requires a few more [steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
 
 ### Disable CFG Lock (optional)
 - From Bootmenu, select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
@@ -85,7 +88,7 @@ todo…
 - Disable Kernel Quirk `AppleXcpmCfgLock`
 - Save your config an reboot
 
-## Geeekbench 5 Results
+## Geekbench 5 Results
 
 ![gb5_sonoma](https://github.com/user-attachments/assets/88c6bd9b-4439-4b85-98e2-81dcdf675da9)
 
