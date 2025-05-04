@@ -70,7 +70,7 @@ todo…
 
 > [!IMPORTANT]
 >
-> Make sure to use the OCAT variant built for OpenCore No ACPI when editing the config. Because the regular version of OCAT will delete the `Enable for all` keys from the config that are required to prohibit Booter settings and ACPI tables into Windows!  
+> Make sure to use the OCAT variant built for OpenCore No ACPI when editing the config. Because the regular version of OCAT will delete the `Enable for all` keys from the config which are required to no inject Booter settings and ACPI tables into Windows!  
 
 ## Post-Install
 
