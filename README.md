@@ -90,7 +90,7 @@ todo…
 - Next, mount the EFI partition ("Tools" > "Mount") 
 - Open your `confi.plist`
 - In the `PlatformInfo` section, select `iMac19,1` from the dropdown menu next to the "Check Coverage" to generate serials, etc.
-- Save the config.plist
+- Save the `config.plist` (ignore OpenCore Validator errors)
 - Copy the EFI folder to a FAT32 formatted USB flash drive
 - Boot macOS from the USB flash drive via the BIOS Boot Menu (F12)
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
