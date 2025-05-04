@@ -27,14 +27,12 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 
 ## What works?
 
-### Supported macOS
-
-- [x] macOS Sonoma. Might work with Sequoia with some minor config adjustments.
-
-### Hardware
-
+- [x] OS:
+  - [x] macOS Sonoma. Might work with Sequoia with some minor config adjustments.
+  - [x] Windows 
 - [x] iGPU (2 Display Ports)
 - [x] SATA drive
+- [x] NVME drive
 - [x] USB Portmapping (USB 2, USB 3.1, USB C). May need further refinement.
 - [x] Ethernet
 - [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
@@ -45,7 +43,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 > 
 > This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP)
 
-## Notable Features
+### Notable Features
 
 - 3D Globe in Apple Maps
 - Slimmed kext for the Intel AC 9260:
@@ -54,7 +52,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 
 ## Issues
 - [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs invesigation. Workaround: Disable Display sleep.
-- [x] ~~When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required~~ &rarr; Switched to OC No ACPI Mod.
+- [x] ~~When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required~~ &rarr; Switched to [OC No ACPI Mod](https://github.com/wjz304/OpenCore_NO_ACPI_Build) to workaround the issue.
 
 ## BIOS Settings
 
@@ -63,12 +61,16 @@ todo…
 ## Deployment
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
 - Extract it
-- Open the `config.plist` with [OCAT](https://github.com/ic005k/OCAuxiliaryTools)
+- Open the `config.plist` with [OCAT](https://github.com/wjz304/OpenCore_NO_ACPI_Build) (version for OpenCore No ACPI build)
 - In the `PlatformInfo/Generic` section, press the "Generate" button next to the "System Product Name" dropdown menu te generate serial numbers, etc.
 - Copy EFI to a FAT32 formatted USB flash drive
 - Boot macOS from the USB flash drive via the BIOS Boot Menu (F12)
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
 - Enjoy
+
+> [!IMPORTANT]
+>
+> Make sure to use the OCAT variant built for OpenCore No ACPI when editing the config. Because the regular version of OCAT will delete the `Enable for all` keys from the config that are required to prohibit Booter settings and ACPI tables into Windows!  
 
 ## Post-Install
 
