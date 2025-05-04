@@ -46,9 +46,9 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 ### Notable Features
 
 - 3D Globe in Apple Maps
-- Slimmed kext for the Intel AC 9260:
-  - AirportItlwm.kext (1,7 instead of 16, 1 MB)
-  - IntelBluetoothFirmware.kext (559 Kb instead of 11,5)
+- Slimmed kexts:
+  - AirportItlwm.kext (1,7 instead of 16, 1 MB). Only contains firmware for Intel AC 9260
+  - IntelBluetoothFirmware.kext (559 Kb instead of 11,5 MB). . Only contains firmware for Intel AC 9260
 
 ## Issues
 - [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs invesigation. Workaround: Disable Display sleep.
