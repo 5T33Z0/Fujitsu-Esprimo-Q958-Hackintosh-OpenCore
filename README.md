@@ -70,8 +70,9 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 
 - 3D Globe in Apple Maps
 - Slimmed kexts:
-  - AirportItlwm.kext (1,7 instead of 16, 1 MB). Only contains firmware for Intel AC 9260
-  - IntelBluetoothFirmware.kext (559 Kb instead of 11,5 MB). . Only contains firmware for Intel AC 9260
+  - AirportItlwm.kext (1,7 instead of 16,1 MB). Only contains firmware for Intel AC 9260
+  - IntelBluetoothFirmware.kext (559 Kb instead of 11,5 MB). Only contains firmware for Intel AC 9260
+  - AppleALC.kext (86 KB instead of 2,3 MB). Only contains Layout 16 for Realtek ALC671.
 - Added entries to MMIO Whitelist
 
 ## Issues
