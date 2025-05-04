@@ -6,12 +6,35 @@
 
 ![Fujitsu_Esprimo_Q958_front](https://github.com/user-attachments/assets/3fc086f2-1be3-4a90-83f9-efdc702d51d2)
 
+---
+**TABLE of CONTENTS**
+
+- [About](#about)
+- [System Specs](#system-specs)
+- [What works?](#what-works)
+  - [Notable Features](#notable-features)
+- [Issues](#issues)
+- [BIOS Settings](#bios-settings)
+- [Deployment](#deployment)
+- [Post-Install](#post-install)
+  - [Applying root patches with OCLP](#applying-root-patches-with-oclp)
+    - [1. Download OCLP](#1-download-oclp)
+    - [2. Apply root patches with OCLP](#2-apply-root-patches-with-oclp)
+    - [3. Reboot and enjoy!](#3-reboot-and-enjoy)
+  - [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+  - [Fixing Sleep issues](#fixing-sleep-issues)
+  - [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
+  - [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
+- [Geekbench 5 Results](#geekbench-5-results)
+- [Credits](#credits)
+---
+
 ## About
-OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958 Small Form Factor PC. As far as I am aware this is the first OpenCore EFI for the Esprimo Q958.
+OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware this is the first OpenCore EFI for this system.
 
 ## System Specs
 
-**Compenent**   | Description 
+**Component**   | Description 
 ----------------|:--------------------------------|
 **Model**       | [Fujitsu Esprimo Q958](https://www.fujitsu.com/id/products/computing/pc/ap/desktops/esprimo-q958/)
 **Formfactor**  | Small Form Factor (Mini-PC)
@@ -49,9 +72,10 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujits Esprimo Q958
 - Slimmed kexts:
   - AirportItlwm.kext (1,7 instead of 16, 1 MB). Only contains firmware for Intel AC 9260
   - IntelBluetoothFirmware.kext (559 Kb instead of 11,5 MB). . Only contains firmware for Intel AC 9260
+- Added entries to MMIO Whitelist
 
 ## Issues
-- [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs invesigation. Workaround: Disable Display sleep.
+- [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs investigation. Workaround: Disable Display sleep.
 - [x] ~~When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required~~ &rarr; Switched to [OC No ACPI Mod](https://github.com/wjz304/OpenCore_NO_ACPI_Build) to workaround the issue.
 
 ## BIOS Settings
@@ -92,18 +116,18 @@ todo…
 - Reboot the system
 - Perform an NVRAM reset
 - Boot into macOS
-- Wifi should work now
+- WiFi should work now
 
 > [!IMPORTANT]
 > 
 > Once root patches are applied, the security seal of the volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches before installing updates and then use LAN to to download and install incremental updates.
 
 ### Disable Gatekeeper (optional)
-I disable Gatekeeper on my systems because it is annoying and wants to stop you from running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekepper in macOS Sequoia requires a few more [steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
+I disable Gatekeeper on my systems because it is annoying and wants to stop you from running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires a few more [steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
 
 ### Fixing Sleep issues
 
-In order to prevent the most common problems with sleep, we will set it to hibernatemode 0 (Suspend to RAM). This is not relevant for now, since the blackscreen-on-wake-issue is not resolved.
+In order to prevent the most common problems with sleep, we will set it to `hibernatemode 0` (Suspend to RAM). This is not relevant for now, since the blackscreen-on-wake issue is not resolved.
 
 Open Terminal and enter:
 
@@ -123,8 +147,7 @@ For more info follow my my guide to [configure hibernation](https://github.com/5
 
 > [!NOTE]
 >
-> This is not relevant for now, since the blackscreen-on-wake-issue is not resolved.
-
+> This is irrelevant for now, since the blackscreen-on-wake issue is not resolved yet.
 
 ### Enable brightness control for external displays
 
@@ -143,7 +166,7 @@ There's a new app called [**MonitorControl**](https://github.com/MonitorControl/
 
 ![gb5_sonoma](https://github.com/user-attachments/assets/88c6bd9b-4439-4b85-98e2-81dcdf675da9)
 
-**Full reseult**: [https://browser.geekbench.com/v5/cpu/23512366](https://browser.geekbench.com/v5/cpu/23512366)
+**Full result**: [https://browser.geekbench.com/v5/cpu/23512366](https://browser.geekbench.com/v5/cpu/23512366)
 
 ## Credits
 - Acidanthera for the [**OpenCore**](https://github.com/acidanthera/OpenCorePkg) Bootloader
