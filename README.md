@@ -1,5 +1,3 @@
-:construction: Work in Progress
-
 # Fujitsu Esprimo Q958 Mini Hackintosh OpenCore
 
 [![OpenCore](https://img.shields.io/badge/OpenCore-1.0.5-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
@@ -46,6 +44,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 **NIC**         | Intel® I219-LM (1 Gbit)
 **WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Formware: `ibt-18-16-1.sfi`, `ibt-18-16-1.ddc`
 **Sound**       | Realtek ALC671 (Layout-ID 16)
+BIOS Revision   | R1.38.0 (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
 
 ## What works?
@@ -81,7 +80,50 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 
 ## BIOS Settings
 
-todo…
+Start by loading "Optiimized Defaults" (under Save & Exit &earr; "Restore Defaults") and then continue adjusting the following settings:
+
+- **Advanced** [TAB]
+	- Drive Configuration
+		- OnBoard SATA Configuration
+			- SATA Mode: AHCI 
+- **CPU Configuration**
+	- Active Processor Cores: All
+	- Intel Virtualization Technology: Enable if you want to use virtualization in Microsoft Windows, otherwise Disable it
+	- VT-D: same
+- **Trusted Computing**
+	- TPM Support: Disabled
+- **USB COnfiguration**
+	- USB 3.1 Gen 2 Speed: Enabled
+	- USB Port Security
+		- USB Port Control: Enable all ports
+		- USB Device Control: Enable all devices
+- **System Management**
+	- Fan Control: Auto or Enhanced (better pperdormance, more fan activity)   
+- **Super IO Configuration**
+	- Serial Port 1 Configuration
+		- Serial Port: Disabled
+- **AMT Configuration**
+	- Intel ANT: Disabled
+- **Network Stack Configuration**
+	- Network Stack: Enabled
+	- IPv4 PXE Support: Disabled      
+	- IPv6 PXE Support: Disabled
+- **Graphic Configuration**
+	- Primary Display: Internal Graphics
+	- Internal Graphic: Enabled
+		- DVMT Shared Memory Size: 64 MB
+		- DVM Total Graphics Memory Size: Max
+- **Power** [TAB]
+	- Power Failure Recovery: Disabled
+	- USB/PS2 Power: Set as needed
+	- USB Type-C Connector Power Limit: Set as needed
+	- External Power Buttob Control: Enabled
+	- LAN: Disabled
+- **Boot** [TAB]
+	- New UEFI OS Option Policy: Place Last
+	- Boot Optiob Priorities:
+		- Boot Option #1: OpenCore
+		- Windows Boot Manager 
 
 ## Deployment
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
