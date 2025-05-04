@@ -74,10 +74,61 @@ todo…
 
 ## Post-Install
 
-### Fix Sleep
+### Applying root patches with OCLP
+
+#### 1. Download OCLP
+- Since you won't have internet access, [download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS
+
+#### 2. Apply root patches with OCLP
+
+- Run OCLP
+- Click on "Apply Root Patch" button
+- "Networking: Modern WiFi" should be available:<br>![intel_spoof05](https://github.com/user-attachments/assets/8b072d05-93f5-4151-b6e1-1d8e0c6c555e)
+- Click "Start Root Patching"
+- It will install the necessary Frameworks required for `AirportItlwm` to work:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
+
+#### 3. Reboot and enjoy!
+
+- Reboot the system
+- Perform an NVRAM reset
+- Boot into macOS
+- Wifi should work now
+
+> [!IMPORTANT]
+> 
+> Once root patches are applied, the security seal of the volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches before installing updates and then use LAN to to download and install incremental updates.
 
 ### Disable Gatekeeper (optional)
 I disable Gatekeeper on my systems because it is annoying and wants to stop you from running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekepper in macOS Sequoia requires a few more [steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
+
+### Fixing Sleep issues
+
+In order to prevent the most common problems with sleep, we will set it to hibernatemode 0 (Suspend to RAM). This is not relevant for now, since the blackscreen-on-wake-issue is not resolved.
+
+Open Terminal and enter:
+
+```bash
+sudo pmset -a hibernatemode 0
+```
+If you have issues with sleep, run the following commands in Terminal:
+
+```bash
+sudo pmset hibernatemode 0
+sudo rm /var/vm/sleepimage
+sudo touch /var/vm/sleepimage
+sudo chflags uchg /var/vm/sleepimage
+```
+
+For more info follow my my guide to [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes#enabling-hibernation-on-hackintosh-systems)
+
+> [!NOTE]
+>
+> This is not relevant for now, since the blackscreen-on-wake-issue is not resolved.
+
+
+### Enable brightness control for external displays
+
+There's a new app called [**MonitorControl**](https://github.com/MonitorControl/MonitorControl) which allows controlling the brightness and contrast of attached external displays right from the menu bar.
 
 ### Disable CFG Lock (optional)
 - From Bootmenu, select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
