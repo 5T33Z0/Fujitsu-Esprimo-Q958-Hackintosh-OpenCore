@@ -85,16 +85,20 @@ todo…
 ## Deployment
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
 - Extract it
-- Open the `config.plist` with [OCAT](https://github.com/wjz304/OpenCore_NO_ACPI_Build) (version for OpenCore No ACPI build)
-- In the `PlatformInfo/Generic` section, press the "Generate" button next to the "System Product Name" dropdown menu te generate serial numbers, etc.
-- Copy EFI to a FAT32 formatted USB flash drive
+- Download [OpenCore Configurator](https://mackie100projects.altervista.org/download-opencore-configurator/) and run it
+- Open Settings and adjust the OpenCore Settings:<br> ![OCC](https://github.com/user-attachments/assets/c940cb76-83f1-4b3a-bcd0-2f0a229d8120)
+- Next, mount the EFI partition ("Tools" > "Mount") 
+- Open your `confi.plist`
+- In the `PlatformInfo` section, select `iMac19,1` from the dropdown menu next to the "Check Coverage" to generate serials, etc.
+- Save the config.plist
+- Copy the EFI folder to a FAT32 formatted USB flash drive
 - Boot macOS from the USB flash drive via the BIOS Boot Menu (F12)
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
 - Enjoy
 
 > [!IMPORTANT]
 >
-> Make sure to use the OCAT variant built for OpenCore No ACPI when editing the config. Because the regular version of OCAT will delete the `Enable for all` keys from the config which are required to no inject Booter settings and ACPI tables into Windows!  
+> Unfortunately, we cammot use OCAT for editing because it will delete the `Enable for all` keys from the config which are required to prohibit Booter settings and ACPI table injection into Windows!  
 
 ## Post-Install
 
