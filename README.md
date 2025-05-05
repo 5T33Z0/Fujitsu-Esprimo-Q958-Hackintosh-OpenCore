@@ -68,10 +68,7 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 ### Notable Features
 
 - 3D Globe in Apple Maps
-- Slimmed kexts:
-  - AirportItlwm.kext (1,7 instead of 16,1 MB). Only contains firmware for Intel AC 9260
-  - IntelBluetoothFirmware.kext (559 Kb instead of 11,5 MB). Only contains firmware for Intel AC 9260
-  - AppleALC.kext (86 KB instead of 2,3 MB). Only contains Layout 16 for Realtek ALC671.
+- Optimized EFI folder Size by using slimmed kexts (11 MB in total instead of the default 54 MB)
 - Added entries to MMIO Whitelist
 
 ## Issues
