@@ -85,7 +85,7 @@ Start by loading "Optiimized Defaults" (under Save & Exit &earr; "Restore Defaul
 			- SATA Mode: AHCI 
 - **CPU Configuration**
 	- Active Processor Cores: All
-	- Intel Virtualization Technology: Enable if you want to use virtualization in Microsoft Windows, otherwise Disable it
+	- Intel Virtualization Technology: Enable if you want to use virtualization in Microsoft Windows, otherwise disable it
 	- VT-D: same
 - **Trusted Computing**
 	- TPM Support: Disabled
