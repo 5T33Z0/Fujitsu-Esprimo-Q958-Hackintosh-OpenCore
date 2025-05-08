@@ -50,7 +50,7 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 ## What works?
 
 - [x] OS:
-  - [x] macOS Sonoma. Might work with Sequoia with some minor config adjustments.
+  - [x] macOS Sonoma+
   - [x] Windows 
 - [x] iGPU (2 Display Ports, 1 DVI Port)
 - [x] SATA drive
