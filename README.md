@@ -52,7 +52,7 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 - [x] OS:
   - [x] macOS Sonoma. Might work with Sequoia with some minor config adjustments.
   - [x] Windows 
-- [x] iGPU (2 Display Ports)
+- [x] iGPU (2 Display Ports, 1 DVI Port)
 - [x] SATA drive
 - [x] NVME drive
 - [x] USB Portmapping (USB 2, USB 3.1, USB C). May need further refinement.
