@@ -1,6 +1,6 @@
 # Fujitsu Esprimo Q958 Mini Hackintosh OpenCore
 
-[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.5-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
+[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.5-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5_to_15.5-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
 
 <img src="https://github.com/user-attachments/assets/3fc086f2-1be3-4a90-83f9-efdc702d51d2" width="500" />
 
@@ -52,10 +52,10 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 - [x] OS:
   - [x] macOS Sonoma+
   - [x] Windows 
-- [x] iGPU (2 Display Ports, 1 DVI Port)
+- [x] iGPU
 - [x] SATA drive
 - [x] NVME drive
-- [x] USB Portmapping (USB 2, USB 3.1, USB C). May need further refinement.
+- [x] USB Portmapping (USB 2, USB 3.1, USB C, Bluetooth )
 - [x] Ethernet
 - [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
 - [x] WLAN
@@ -67,13 +67,14 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 
 ### Notable Features
 
-- 3D Globe in Apple Maps
-- Optimized EFI folder Size by using slimmed kexts (11 MB in total instead of the default 54 MB)
-- Added entries to MMIO Whitelist
+- [x] All 3 Graphics ports working (`con0` = DVI, `con1` = DP1 (bottom), `con3` = DP2 (Top))
+- [x] 3D Globe in Apple Maps
+- [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
+- [x] Added MMIO Whitelist entries
 
 ## Issues
 - [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs investigation. Workaround: Disable Display sleep.
-- [x] ~~When trying to boot Windows 10 via OpenCore I get a Kernel Panic. Further Investigation required~~ &rarr; Switched to [OC No ACPI Mod](https://github.com/wjz304/OpenCore_NO_ACPI_Build) to workaround the issue.
+- [x] When trying to boot Windows 10 via OpenCore, I got Kernel Panics &rarr; Switched to [OC No ACPI Mod](https://github.com/wjz304/OpenCore_NO_ACPI_Build) to workaround the issue.
 
 ## BIOS Settings
 
@@ -136,18 +137,14 @@ Start by loading "Optiimized Defaults" (under Save & Exit &earr; "Restore Defaul
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
 - Enjoy
 
-> [!IMPORTANT]
->
-> Unfortunately, we cammot use OCAT for editing because it will delete the `Enable for all` keys from the config which are required to prohibit Booter settings and ACPI table injection into Windows!  
-
 ## Post-Install
 
 ### Applying root patches with OCLP
 
 #### 1. Download OCLP
-- Since you won't have internet access, [download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS
+- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia (in Sonoma, you can do it afterwards)
 
-#### 2. Apply root patches with OCLP
+#### 2. Apply root patches with OCLP (macOS Sequoia only)
 
 - Run OCLP
 - Click on "Apply Root Patch" button
@@ -178,6 +175,7 @@ Open Terminal and enter:
 ```bash
 sudo pmset -a hibernatemode 0
 ```
+
 If you have issues with sleep, run the following commands in Terminal:
 
 ```bash
