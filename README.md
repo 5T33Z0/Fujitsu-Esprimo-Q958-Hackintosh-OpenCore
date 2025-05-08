@@ -79,7 +79,7 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 
 ## BIOS Settings
 
-Start by loading "Optiimized Defaults" (under Save & Exit &earr; "Restore Defaults") and then continue adjusting the following settings:
+Start by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaults") and then continue adjusting the following settings:
 
 - **Advanced** [TAB]
 	- Drive Configuration
@@ -215,6 +215,7 @@ There's a new app called [**MonitorControl**](https://github.com/MonitorControl/
 - Acidanthera for the [**OpenCore**](https://github.com/acidanthera/OpenCorePkg) Bootloader
 - Dortania for [**OpenCore Legacy Patcher**](https://github.com/dortania/OpenCore-Legacy-Patcher)
 - lzhoang2801 for [**OpCore Simplify**](https://github.com/lzhoang2801/OpCore-Simplify)
+- ic005k for [**OC Auxiliary Tools**](https://github.com/ic005k/OCAuxiliaryTools)
 - CorpNewt for [**SSDTTime**](https://github.com/corpnewt/SSDTTime), [**MMIODevirt**](https://github.com/corpnewt/MmioDevirt), [**ProperTree**](https://github.com/corpnewt/ProperTree) and [**MountEFI**](https://github.com/corpnewt/MountEFI)
 - benbaker76 for [**Hackintool**](https://github.com/benbaker76/Hackintool) (and all users who contributed framebuffer patches for it because it was a pita to get the Display Ports working)
 - Unknown for [**USBToolBox**](https://github.com/USBToolBox/tool)
