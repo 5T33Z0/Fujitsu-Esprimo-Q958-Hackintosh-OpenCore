@@ -207,9 +207,18 @@ There's a new app called [**MonitorControl**](https://github.com/MonitorControl/
 
 ## Geekbench 5 Results
 
+### CPU
+
 ![gb5_sonoma](https://github.com/user-attachments/assets/88c6bd9b-4439-4b85-98e2-81dcdf675da9)
 
 **Full result**: [https://browser.geekbench.com/v5/cpu/23512366](https://browser.geekbench.com/v5/cpu/23512366)
+
+### iGPU
+
+Metal | OpenCL | RPS Control
+:----:|:------:|:------------:
+[**4941**](https://browser.geekbench.com/v5/compute/6868138)| [**5341**](https://browser.geekbench.com/v5/compute/6868141) | **ON**
+[4776](https://browser.geekbench.com/v5/compute/6868144) | [4995](https://browser.geekbench.com/v5/compute/6868143) | OFF
 
 ## Credits
 - Acidanthera for the [**OpenCore**](https://github.com/acidanthera/OpenCorePkg) Bootloader
