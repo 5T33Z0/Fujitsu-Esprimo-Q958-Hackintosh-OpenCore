@@ -140,10 +140,11 @@ Start by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaul
 
 ## Post-Install
 
-### Applying root patches with OCLP
+### Applying root patches with OCLP (macOS Sequoia only)
+In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with OpenCore Legacy Patcher.
 
 #### 1. Download OCLP
-- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia (in Sonoma, you can do it afterwards)
+- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
 
 #### 2. Apply root patches with OCLP (macOS Sequoia only)
 
