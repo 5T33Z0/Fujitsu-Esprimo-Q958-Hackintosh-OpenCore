@@ -34,7 +34,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 ## System Specs
 
 **Component**   | Description 
-----------------|:--------------------------------|
+---------------:|:--------------------------------|
 **Model**       | [Fujitsu Esprimo Q958](https://www.fujitsu.com/id/products/computing/pc/ap/desktops/esprimo-q958/)
 **Formfactor**  | Small Form Factor (Mini-PC)
 **Chipset**     | [Intel Q370](https://www.intel.com/content/www/us/en/products/sku/133282/intel-q370-chipset/specifications.html)
