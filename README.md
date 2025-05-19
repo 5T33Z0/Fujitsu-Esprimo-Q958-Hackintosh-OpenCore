@@ -43,7 +43,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 **RAM**         | 32 GB DDR4 (2666 MHz)
 **Storage**     | WD Blue SN550 NVMe SSD       
 **NIC**         | Intel® I219-LM (1 Gbit)
-**WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Formware: `ibt-18-16-1.sfi`, `ibt-18-16-1.ddc`
+**WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Firmware: `ibt-18-16-1.sfi`, `ibt-18-16-1.ddc`
 **Sound**       | Realtek ALC671 (Layout-ID 16)
 BIOS Revision   | R1.38.0 (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
