@@ -206,6 +206,10 @@ There's a new app called [**MonitorControl**](https://github.com/MonitorControl/
 - Disable Kernel Quirk `AppleXcpmCfgLock`
 - Save your config an reboot
 
+> [!NOTE]
+>
+> Disabling CFG Lock in this ways is not permanent. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it!
+
 ## Geekbench 5 Results
 
 ### CPU
