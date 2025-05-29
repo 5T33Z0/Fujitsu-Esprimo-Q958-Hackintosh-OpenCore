@@ -75,7 +75,6 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 
 ## Issues
 - [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs investigation. Workaround: Disable Display sleep.
-- [x] When trying to boot Windows 10 via OpenCore, I got Kernel Panics &rarr; Switched to [OC No ACPI Mod](https://github.com/wjz304/OpenCore_NO_ACPI_Build) to workaround the issue.
 
 ## BIOS Settings
 
