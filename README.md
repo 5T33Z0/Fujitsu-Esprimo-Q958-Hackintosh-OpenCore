@@ -7,27 +7,26 @@
 ---
 **TABLE of CONTENTS**
 
-- [Fujitsu Esprimo Q958 Mini Hackintosh OpenCore](#fujitsu-esprimo-q958-mini-hackintosh-opencore)
-	- [About](#about)
-	- [System Specs](#system-specs)
-	- [What works?](#what-works)
-		- [Notable Features](#notable-features)
-	- [Issues](#issues)
-	- [BIOS Settings](#bios-settings)
-	- [Deployment](#deployment)
-	- [Post-Install](#post-install)
-		- [Applying root patches with OCLP (macOS Sequoia only)](#applying-root-patches-with-oclp-macos-sequoia-only)
-			- [1. Download OCLP](#1-download-oclp)
-			- [2. Apply root patches with OCLP (macOS Sequoia only)](#2-apply-root-patches-with-oclp-macos-sequoia-only)
-			- [3. Reboot and enjoy!](#3-reboot-and-enjoy)
-		- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-		- [Fixing Sleep issues](#fixing-sleep-issues)
-		- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
-		- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
-	- [Geekbench 5 Results](#geekbench-5-results)
-		- [CPU](#cpu)
-		- [iGPU](#igpu)
-	- [Credits](#credits)
+- [About](#about)
+- [System Specs](#system-specs)
+- [What works?](#what-works)
+	- [Notable Features](#notable-features)
+- [Issues](#issues)
+- [BIOS Settings](#bios-settings)
+- [Deployment](#deployment)
+- [Post-Install](#post-install)
+	- [Applying root patches with OCLP (macOS Sequoia only)](#applying-root-patches-with-oclp-macos-sequoia-only)
+		- [1. Download OCLP](#1-download-oclp)
+		- [2. Apply root patches with OCLP (macOS Sequoia only)](#2-apply-root-patches-with-oclp-macos-sequoia-only)
+		- [3. Reboot and enjoy!](#3-reboot-and-enjoy)
+	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+	- [Fixing Sleep issues](#fixing-sleep-issues)
+	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
+	- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
+- [Geekbench 5 Results](#geekbench-5-results)
+	- [CPU](#cpu)
+	- [iGPU](#igpu)
+- [Credits](#credits)
 
 ---
 
@@ -173,19 +172,24 @@ I disable Gatekeeper on my systems because it is annoying and wants to stop you 
 
 ### Fixing Sleep issues
 
-In order to prevent the most common problems with sleep, we will set it to `hibernatemode 0` (Suspend to RAM). This is not relevant for now, since the blackscreen-on-wake issue is not resolved.
+In order to prevent the most common issues with sleep, we will set it to `hibernatemode 0` (Suspend to RAM), write protect the slee pimage using Terminal:
 
-**Open Terminal and enter**:
 
 ```bash
 sudo pmset -a hibernatemode 0
 sudo rm /var/vm/sleepimage
 sudo touch /var/vm/sleepimage
 sudo chflags uchg /var/vm/sleepimage
+```
+
+Next, we disable `displaysleep` and `powernap` to workaround the black-screen-on-wake issue. And since this Mini-PC does not have a motion sensor, we also disable proximitywake: 
+
+```bash 
 sudo pmset displaysleep 0
 sudo pmset powernap 0
 sudo pmset proximitywake 0
 ```
+
 
 For more info follow my my guide to [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes#enabling-hibernation-on-hackintosh-systems)
 
