@@ -7,24 +7,27 @@
 ---
 **TABLE of CONTENTS**
 
-- [About](#about)
-- [System Specs](#system-specs)
-- [What works?](#what-works)
-	- [Notable Features](#notable-features)
-- [Issues](#issues)
-- [BIOS Settings](#bios-settings)
-- [Deployment](#deployment)
-- [Post-Install](#post-install)
-	- [Applying root patches with OCLP](#applying-root-patches-with-oclp)
-		- [1. Download OCLP](#1-download-oclp)
-		- [2. Apply root patches with OCLP (macOS Sequoia only)](#2-apply-root-patches-with-oclp-macos-sequoia-only)
-		- [3. Reboot and enjoy!](#3-reboot-and-enjoy)
-	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-	- [Fixing Sleep issues](#fixing-sleep-issues)
-	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
-	- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
-- [Geekbench 5 Results](#geekbench-5-results)
-- [Credits](#credits)
+- [Fujitsu Esprimo Q958 Mini Hackintosh OpenCore](#fujitsu-esprimo-q958-mini-hackintosh-opencore)
+	- [About](#about)
+	- [System Specs](#system-specs)
+	- [What works?](#what-works)
+		- [Notable Features](#notable-features)
+	- [Issues](#issues)
+	- [BIOS Settings](#bios-settings)
+	- [Deployment](#deployment)
+	- [Post-Install](#post-install)
+		- [Applying root patches with OCLP (macOS Sequoia only)](#applying-root-patches-with-oclp-macos-sequoia-only)
+			- [1. Download OCLP](#1-download-oclp)
+			- [2. Apply root patches with OCLP (macOS Sequoia only)](#2-apply-root-patches-with-oclp-macos-sequoia-only)
+			- [3. Reboot and enjoy!](#3-reboot-and-enjoy)
+		- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+		- [Fixing Sleep issues](#fixing-sleep-issues)
+		- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
+		- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
+	- [Geekbench 5 Results](#geekbench-5-results)
+		- [CPU](#cpu)
+		- [iGPU](#igpu)
+	- [Credits](#credits)
 
 ---
 
@@ -45,7 +48,8 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 **NIC**         | Intel® I219-LM (1 Gbit)
 **WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Firmware: `ibt-18-16-1.sfi`, `ibt-18-16-1.ddc`
 **Sound**       | Realtek ALC671 (Layout-ID 16)
-BIOS Revision   | R1.38.0 (08/29/22024)
+**I/O**          | Serial Port (DE-9, disabled)
+**BIOS**        | R1.38.0 (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
 
 ## What works?
@@ -64,17 +68,17 @@ BIOS Revision   | R1.38.0 (08/29/22024)
 
 > [!IMPORTANT]
 > 
-> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP)
+> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP).
 
 ### Notable Features
 
-- [x] All 3 Graphics ports working (`con0` = DVI, `con1` = DP1 (bottom), `con3` = DP2 (Top))
-- [x] 3D Globe in Apple Maps
+- [x] All 3 Graphics ports are working (`con0` = DVI, `con1` = DP1 (bottom), `con3` = DP2 (Top))
+- [x] 3D Globe in Apple Maps.
 - [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
-- [x] Added MMIO Whitelist entries
+- [x] Added MMIO Whitelist entries.
 
 ## Issues
-- [ ] Another Mini-PC with a Black-Screen-on-Wake issue. Needs investigation. Workaround: Disable Display sleep.
+- [ ] Another Small Form Factor PC with a Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`.
 
 ## BIOS Settings
 
@@ -171,19 +175,16 @@ I disable Gatekeeper on my systems because it is annoying and wants to stop you 
 
 In order to prevent the most common problems with sleep, we will set it to `hibernatemode 0` (Suspend to RAM). This is not relevant for now, since the blackscreen-on-wake issue is not resolved.
 
-Open Terminal and enter:
+**Open Terminal and enter**:
 
 ```bash
 sudo pmset -a hibernatemode 0
-```
-
-If you have issues with sleep, run the following commands in Terminal:
-
-```bash
-sudo pmset hibernatemode 0
 sudo rm /var/vm/sleepimage
 sudo touch /var/vm/sleepimage
 sudo chflags uchg /var/vm/sleepimage
+sudo pmset displaysleep 0
+sudo pmset powernap 0
+sudo pmset proximitywake 0
 ```
 
 For more info follow my my guide to [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes#enabling-hibernation-on-hackintosh-systems)
