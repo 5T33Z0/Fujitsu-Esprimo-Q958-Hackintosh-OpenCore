@@ -1,0 +1,14 @@
+AMI USB Driver
+Serial ATA Controller Initialization Driver
+PCI Serial Driver
+Generic Disk I/O Driver
+Partition Driver(MBR/GPT/El Torito)
+Integrated Touch Driver
+IpSec Driver
+HttpDxe
+DNS Network Service Driver
+FAT File System Driver
+Intel(R) Gigabit 0.0.18
+Intel(R) GOP Driver [9.0.1079]
+HFS File System Driver
+APFS
