@@ -202,7 +202,7 @@ For more info follow my my guide to [configure hibernation](https://github.com/5
 
 ### Enable brightness control for external displays
 
-There's a new app called [**MonitorControl**](https://github.com/MonitorControl/MonitorControl) which allows controlling the brightness and contrast of attached external displays right from the menu bar.
+There's a new app called [**MonitorControl**](https://github.com/MonitorControl/MonitorControl) which allows controlling the brightness and contrast of attached external displays right from the menu bar and/or keyboard.
 
 ### Disable CFG Lock (optional)
 - From Bootmenu, select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
