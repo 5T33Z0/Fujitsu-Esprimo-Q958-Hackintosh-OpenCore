@@ -193,7 +193,6 @@ sudo pmset powernap 0
 sudo pmset proximitywake 0
 ```
 
-
 For more info follow my my guide to [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes#enabling-hibernation-on-hackintosh-systems)
 
 > [!NOTE]
@@ -216,6 +215,14 @@ There's a new app called [**MonitorControl**](https://github.com/MonitorControl/
 > [!NOTE]
 >
 > Disabling CFG Lock in this ways is not permanent. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it!
+
+### Add Eject button for optical drive to Menu Bar
+macOS locks the optical drive sometimes so that you can't open it by pressing the physical eject button – even if no media is present. If you have an Apple Keyboard, you can simply press the <kbd>Eject</kbd> key to open the drive. 
+
+But if you don't, you can add an Eject button to the menu bar: 
+
+- Open Finder and navigate to: `System/Library/CoreServices/Menu Extras`
+- Double-click on `Eject.menu`. This adds the Eject button icon to the Menu Bar: <br>![Eject](https://github.com/user-attachments/assets/9ed29614-d4e8-48f6-a2a1-93b48a6d36da)
 
 ## Geekbench 5 Results
 
