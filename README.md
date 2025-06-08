@@ -83,7 +83,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 ## BIOS Settings
 
 <details>
-<summary><b>Click to show BIOS settings</b>)</summary><br>
+<summary><b>Click to show BIOS settings</b></summary><br>
 
 Begin by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaults") and then continue, adjusting the following settings:
 
