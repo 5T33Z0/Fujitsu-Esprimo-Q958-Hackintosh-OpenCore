@@ -23,6 +23,7 @@
 	- [Fixing Sleep issues](#fixing-sleep-issues)
 	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
 	- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
+ 	- [Add Eject button](#add-eject-button-for-optical-drive-to-menu-bar) 
 - [Geekbench 5 Results](#geekbench-5-results)
 	- [CPU](#cpu)
 	- [iGPU](#igpu)
