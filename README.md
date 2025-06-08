@@ -82,7 +82,10 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 
 ## BIOS Settings
 
-Start by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaults") and then continue adjusting the following settings:
+<details>
+<summary><b>Click to show BIOS settings</b>)</summary><br>
+
+Begin by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaults") and then continue, adjusting the following settings:
 
 - **Advanced** [TAB]
 	- Drive Configuration
@@ -126,6 +129,7 @@ Start by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaul
 	- Boot Optiob Priorities:
 		- Boot Option #1: OpenCore
 		- Windows Boot Manager 
+</details>
 
 ## Deployment
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
