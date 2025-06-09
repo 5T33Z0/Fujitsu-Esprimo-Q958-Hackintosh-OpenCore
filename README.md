@@ -23,7 +23,7 @@
 	- [Fixing Sleep issues](#fixing-sleep-issues)
 	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
 	- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
- 	- [Add Eject button](#add-eject-button-for-optical-drive-to-menu-bar) 
+	- [Add Eject button for optical drive to Menu Bar](#add-eject-button-for-optical-drive-to-menu-bar)
 - [Geekbench 5 Results](#geekbench-5-results)
 	- [CPU](#cpu)
 	- [iGPU](#igpu)
@@ -243,6 +243,9 @@ Metal | OpenCL | RPS Control
 :----:|:------:|:------------:
 [**4941**](https://browser.geekbench.com/v5/compute/6868138)| [**5341**](https://browser.geekbench.com/v5/compute/6868141) | **ON**
 [4776](https://browser.geekbench.com/v5/compute/6868144) | [4995](https://browser.geekbench.com/v5/compute/6868143) | OFF
+
+I also tested force-loading Apple's GUC firmware ([4858 points in the Metal test](https://browser.geekbench.com/v5/compute/6872229/claim?key=253757)), but that's no usable option for me since it causes Firefox Tabs to crash. It has no impact on Safari, though.
+
 
 > [!TIP]
 >
