@@ -32,7 +32,7 @@
 ---
 
 ## About
-OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware this is the first OpenCore EFI for this system.
+OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware, this is the first OpenCore EFI for this system. I am using it for office/streaming purposes. It's a quite capable and powerful mini-pc. It can be maxed-out with an i9-9900T 8 Core 16 Thread CPU and 64 Gigs or RAM.
 
 ## System Specs
 
