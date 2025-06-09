@@ -173,7 +173,7 @@ In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with
 
 > [!IMPORTANT]
 > 
-> Once root patches are applied, the security seal of the volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches before installing updates and then use LAN to to download and install incremental updates.
+> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches before installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
 
 ### Disable Gatekeeper (optional)
 I disable Gatekeeper on my systems because it is annoying and wants to stop you from running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires a few more [steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
