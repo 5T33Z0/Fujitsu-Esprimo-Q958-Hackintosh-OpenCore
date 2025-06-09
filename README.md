@@ -32,7 +32,7 @@
 ---
 
 ## About
-OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware, this is the first OpenCore EFI for this system. I am using it for office/streaming purposes. It's a quite capable and powerful mini-pc. It can be maxed-out with an i9-9900T 8 Core 16 Thread CPU and 64 Gigs or RAM.
+OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware, this is the first OpenCore EFI for this system. I am using it for office/streaming purposes. It's a quite capable and powerful mini-pc. It has a real 300-series chipset, the system can be maxed-out with with an i9-9900T (8 Cores 16 Threads) and 64 Gigs of RAM.
 
 ## System Specs
 
@@ -48,7 +48,7 @@ OpenCore EFI folder for running macOS Sonoma or newer on the Fujitsu Esprimo Q95
 **NIC**         | Intel® I219-LM (1 Gbit)
 **WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Firmware: `ibt-18-16-1.sfi`, `ibt-18-16-1.ddc`
 **Sound**       | Realtek ALC671 (Layout-ID 16)
-**I/O**          | Serial Port (DE-9, disabled)
+**I/O**         | Serial Port (DE-9, disabled)
 **BIOS**        | R1.38.0 (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
 
