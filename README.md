@@ -32,7 +32,7 @@
 ---
 
 ## About
-OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware, this is the first OpenCore EFI for this system. I am using it for office/streaming purposes. It's a quite capable and powerful mini-pc. It has a real 300-series chipset, the system can be maxed-out with with an i9-9900T (8 Cores 16 Threads) and 64 Gigs of RAM.
+OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware, this is the first OpenCore EFI for this system. I am using it for office/streaming purposes. It's a quite capable and powerful mini-pc. It has a true 300-series chipset, the system can be maxed-out with with an i9-9900T (8 Cores 16 Threads) and 64 Gigs of RAM.
 
 ## System Specs
 
