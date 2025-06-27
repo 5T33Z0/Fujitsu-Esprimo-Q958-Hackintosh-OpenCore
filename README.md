@@ -15,10 +15,10 @@
 - [BIOS Settings](#bios-settings)
 - [Deployment](#deployment)
 - [Post-Install](#post-install)
-	- [Applying root patches with OCLP (macOS Sequoia only)](#applying-root-patches-with-oclp-macos-sequoia-only)
-		- [1. Download OCLP](#1-download-oclp)
-		- [2. Apply root patches with OCLP (macOS Sequoia only)](#2-apply-root-patches-with-oclp-macos-sequoia-only)
-		- [3. Reboot and enjoy!](#3-reboot-and-enjoy)
+	- [macOS Tahoe](#macos-tahoe)
+		- [Applying root patches with OCLP Mod to enable Audio (macOS Tahoe beta 2)](#applying-root-patches-with-oclp-mod-to-enable-audio-macos-tahoe-beta-2)
+	- [macOS Sequoia](#macos-sequoia)
+		- [Applying root patches with OCLP to enable Intel WiFi (macOS Sequoia)](#applying-root-patches-with-oclp-to-enable-intel-wifi-macos-sequoia)
 	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
 	- [Fixing Sleep issues](#fixing-sleep-issues)
 	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
@@ -85,7 +85,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 <details>
 <summary><b>Click to show BIOS settings</b></summary><br>
 
-Begin by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaults") and then continue, adjusting the following settings:
+Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Defaults") and then continue, adjusting the following settings:
 
 - **Advanced** [TAB]
 	- Drive Configuration
@@ -139,7 +139,7 @@ Begin by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaul
 - Next, open the Sync window and click on "Get OpenCore"
 - In the "Sync" Window, click on "Get OpenCore" to download the latest OC build
 - Close the sync window
-- Back in the Main window click on the button to mount the EFI partiton
+- Back in the Main window click on the button to mount the EFI partition
 - Click on "Mount and open config.plist"
 - In the `PlatformInfo/Generic` section, select `iMac19,1` and click on "Generate"
 - Save the `config.plist` 
@@ -150,24 +150,33 @@ Begin by loading "Optiimized Defaults" (under Save & Exit &rarr; "Restore Defaul
 
 ## Post-Install
 
-### Applying root patches with OCLP (macOS Sequoia only)
+### macOS Tahoe
+
+#### Applying root patches with OCLP Mod to enable Audio (macOS Tahoe beta 2)
+Apple deleted the AppleHDA required for on-board audio in macOS 26 beta 2. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. To download the latest build, you need a Github account.
+
+- Make sure, your system is connected to the internet either via LAN or via WiFi (requires [**Heliport**](https://github.com/OpenIntelWireless/HeliPort/releases) app to connect to APs)
+- Download [**OCLP-Mod.pkg**](https://github.com/laobamac/OCLP-Mod/actions) and install it
+- Run it – and you will see: the GUI is in Chinese, unfortunately.
+- Press the upper right button for the root patching
+- If required, it will automatically download KDK or Metalibs
+- Next, press the upper button to install patches and wait until patching is completed
+- Restart macOS when prompted to
+- Once macOS is up and running again, Audio will work. Maybe you have to adjust audio devices
+
+### macOS Sequoia
+
+#### Applying root patches with OCLP to enable Intel WiFi (macOS Sequoia)
 In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with OpenCore Legacy Patcher.
 
-#### 1. Download OCLP
 - [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
-
-#### 2. Apply root patches with OCLP (macOS Sequoia only)
-
 - Run OCLP
 - Click on "Apply Root Patch" button
 - "Networking: Modern WiFi" should be available:<br>![intel_spoof05](https://github.com/user-attachments/assets/8b072d05-93f5-4151-b6e1-1d8e0c6c555e)
 - Click "Start Root Patching"
 - It will install the necessary Frameworks required for `AirportItlwm` to work:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
-
-#### 3. Reboot and enjoy!
-
 - Reboot the system
-- Perform an NVRAM reset
+- Reset NVRAM
 - Boot into macOS
 - WiFi should work now
 
@@ -180,8 +189,7 @@ I disable Gatekeeper on my systems because it is annoying and wants to stop you 
 
 ### Fixing Sleep issues
 
-In order to prevent the most common issues with sleep, we will set it to `hibernatemode 0` (Suspend to RAM), write protect the slee pimage using Terminal:
-
+In order to prevent the most common issues with sleep, we will set it to `hibernatemode 0` (Suspend to RAM), write protect the sleep image using Terminal:
 
 ```bash
 sudo pmset -a hibernatemode 0
@@ -245,7 +253,6 @@ Metal | OpenCL | RPS Control
 [4776](https://browser.geekbench.com/v5/compute/6868144) | [4995](https://browser.geekbench.com/v5/compute/6868143) | OFF
 
 I also tested force-loading Apple's GUC firmware ([4858 points in the Metal test](https://browser.geekbench.com/v5/compute/6872229/claim?key=253757)), but that's no usable option for me since it causes Firefox Tabs to crash. It has no impact on Safari, though.
-
 
 > [!TIP]
 >
