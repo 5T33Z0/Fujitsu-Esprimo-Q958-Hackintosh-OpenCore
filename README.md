@@ -159,8 +159,8 @@ Apple deleted the AppleHDA required for on-board audio in macOS 26 beta 2. Since
 - Download [**OCLP-Mod.pkg**](https://github.com/laobamac/OCLP-Mod/actions) and install it
 - Run it – and you will see: the GUI is in Chinese, unfortunately
 - Press the upper right button for the root patching:<br>![oclp_mod01](https://github.com/user-attachments/assets/ad42427a-3726-480e-89a3-d2bd98754c3c)
-- If required, it will automatically download KDK or Metalibs
 - Next, press the upper button to install patches and wait until patching is completed:<br>![oclp_mod02](https://github.com/user-attachments/assets/25e5fc28-05de-4cdd-ac3d-d5a28d06d1db)
+- If required, it will automatically download KDK or Metalibs
 - Restart macOS when prompted to
 - Once macOS is up and running again, the audio device will be present and working:<br>![Hackintool](https://github.com/user-attachments/assets/eae77186-9515-4f3f-8a2b-1309b7d769f7)
 
