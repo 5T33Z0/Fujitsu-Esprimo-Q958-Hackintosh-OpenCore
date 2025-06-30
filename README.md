@@ -1,6 +1,6 @@
 # Fujitsu Esprimo Q958 Mini Hackintosh OpenCore
 
-[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.5-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5_to_26_beta-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
+[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.5-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5_to_26_beta_2-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
 
 <img src="https://github.com/user-attachments/assets/3fc086f2-1be3-4a90-83f9-efdc702d51d2" width="100%%" />
 
@@ -20,6 +20,7 @@
 	- [macOS Sequoia](#macos-sequoia)
 		- [Applying root patches with OCLP to enable Intel WiFi (macOS Sequoia)](#applying-root-patches-with-oclp-to-enable-intel-wifi-macos-sequoia)
 	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+	- [Strengthen Security (optional)](#strengthen-security-optional)
 	- [Fixing Sleep issues](#fixing-sleep-issues)
 	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
 	- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
@@ -186,6 +187,10 @@ In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with
 
 ### Disable Gatekeeper (optional)
 I disable Gatekeeper on my systems because it is annoying and wants to stop you from running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires a few more [steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
+
+###  Strengthen Security (optional)
+
+In config.plist, navigate to Misc/Security/SecureBootModel and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4 it does not longer work correctly during install.
 
 ### Fixing Sleep issues
 
