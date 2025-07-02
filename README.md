@@ -135,15 +135,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 ## Deployment
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
 - Extract it
-- Download, install and run [OpenCore Auxiliary Tools](https://github.com/ic005k/OCAuxiliaryTools)
-- From the menubar, select Edit > OpenCore DEV:<br>![Bildschirmfoto 2025-05-06 um 06 03 58](https://github.com/user-attachments/assets/92354797-b3b9-43d0-8e38-05acda93c76d)
-- Next, open the Sync window and click on "Get OpenCore"
-- In the "Sync" Window, click on "Get OpenCore" to download the latest OC build
-- Close the sync window
-- Back in the Main window click on the button to mount the EFI partition
-- Click on "Mount and open config.plist"
-- In the `PlatformInfo/Generic` section, select `iMac19,1` and click on "Generate"
-- Save the `config.plist` 
+- Open the `config.plist`, add Serials, MLB etc. with [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases) (in Dev Mode) or [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) and save it
 - Copy the EFI folder to a FAT32 formatted USB flash drive
 - Boot macOS from the USB flash drive via the BIOS Boot Menu (F12)
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
