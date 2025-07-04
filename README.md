@@ -15,11 +15,9 @@
 - [BIOS Settings](#bios-settings)
 - [Deployment](#deployment)
 - [Post-Install](#post-install)
-	- [macOS Tahoe](#macos-tahoe)
-		- [Applying root patches with OCLP Mod to enable Audio (macOS Tahoe beta 2)](#applying-root-patches-with-oclp-mod-to-enable-audio-macos-tahoe-beta-2)
-	- [macOS Sequoia](#macos-sequoia)
-		- [Applying root patches with OCLP to enable Intel WiFi (macOS Sequoia)](#applying-root-patches-with-oclp-to-enable-intel-wifi-macos-sequoia)
 	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2)
+	- [Enable Intel WiFi (macOS Sequoia)](#enable-intel-wifi-macos-sequoia)
 	- [Strengthen Security (optional)](#strengthen-security-optional)
 	- [Fixing Sleep issues](#fixing-sleep-issues)
 	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
@@ -143,23 +141,13 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 
 ## Post-Install
 
-### macOS Tahoe
+### Disable Gatekeeper (optional)
+I disable Gatekeeper on my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires [additional steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
 
-#### Applying root patches with OCLP Mod to enable Audio (macOS Tahoe beta 2)
-Apple deleted the AppleHDA required for on-board audio in macOS 26 beta 2. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. To download the latest build, you need a Github account.
+### Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2)
+Apple deleted the AppleHDA required for on-board audio in macOS 26 beta 2. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
 
-- Make sure, your system is connected to the internet either via LAN or via WiFi (requires [**Heliport**](https://github.com/OpenIntelWireless/HeliPort/releases) app to connect to APs)
-- Download [**OCLP-Mod.pkg**](https://github.com/laobamac/OCLP-Mod/actions) and install it
-- Run it – and you will see: the GUI is in Chinese, unfortunately
-- Press the upper right button for the root patching:<br>![oclp_mod01](https://github.com/user-attachments/assets/ad42427a-3726-480e-89a3-d2bd98754c3c)
-- Next, press the upper button to install patches and wait until patching is completed:<br>![oclp_mod02](https://github.com/user-attachments/assets/25e5fc28-05de-4cdd-ac3d-d5a28d06d1db)
-- If required, it will automatically download KDK or Metalibs
-- Restart macOS when prompted to
-- Once macOS is up and running again, the audio device will be present and working:<br>![Hackintool](https://github.com/user-attachments/assets/eae77186-9515-4f3f-8a2b-1309b7d769f7)
-
-### macOS Sequoia
-
-#### Applying root patches with OCLP to enable Intel WiFi (macOS Sequoia)
+### Enable Intel WiFi (macOS Sequoia)
 In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with OpenCore Legacy Patcher.
 
 - [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
@@ -176,9 +164,6 @@ In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with
 > [!IMPORTANT]
 > 
 > Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches before installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
-
-### Disable Gatekeeper (optional)
-I disable Gatekeeper on my systems because it is annoying and wants to stop you from running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires a few more [steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
 
 ###  Strengthen Security (optional)
 
