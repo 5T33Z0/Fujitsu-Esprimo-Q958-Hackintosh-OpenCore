@@ -26,6 +26,8 @@
 - [Geekbench 5 Results](#geekbench-5-results)
 	- [CPU](#cpu)
 	- [iGPU](#igpu)
+- [Maintenance](#maintenance)
+	- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
 - [Credits](#credits)
 
 ---
@@ -240,6 +242,31 @@ I also tested force-loading Apple's GUC firmware ([4858 points in the Metal test
 >
 > - If iGPU performance is sufficient for your needs and you want a nearly silent operation of the system, disable the `rps-control` property by changing it to `00000000`
 > - If you need higher iGPU performance, enable `rps-control` by changing the value to `01000000`. But this will increase temps which results in more fan activity.
+
+## Maintenance
+
+### Adding kext URLs to OCAT
+
+OCAT does not contain all the links to kext repos used in my EFI folder. So in order to fetch updates for them, you need to them to `KextURL.txt`.
+
+**Instructions**
+
+1. Open Finder
+2. Press <kbd>CMD</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd>
+3. Paste in this path and hit <kbd>Enter</kbd>: 
+	```
+	~/.config/OCAuxiliaryTools/
+	```
+4. Open `KextUrl.txt` with TextEdit
+5. Add the following entries:
+	```text
+	AdvancedMap.kext | https://github.com/narcyzzo/AdvancedMap
+	AMFIPass.kext | https://github.com/bluppus20/AMFIPass
+	IntelMausiEthernet.kext | https://github.com/Mieze/IntelMausiEthernet
+	```
+6. Save the file
+
+The next time, you check for kext updates in OCAT (enable the `Dev` option), the color of the squares in front of the kexts above will no longer be grey (not found) but either red (outdated) or green (up to date). All the kexts coming from the OCLP repo can't be fetched automatically, so they will remain grey.
 
 ## Credits
 - Acidanthera for the [**OpenCore**](https://github.com/acidanthera/OpenCorePkg) Bootloader
