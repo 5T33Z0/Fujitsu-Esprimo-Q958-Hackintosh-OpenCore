@@ -247,7 +247,7 @@ I also tested force-loading Apple's GUC firmware ([4858 points in the Metal test
 
 ### Adding kext URLs to OCAT
 
-OCAT does not contain all the links to kext repos used in my EFI folder. So in order to fetch updates for them, you need to them to `KextURL.txt`.
+OCAT does not contain all the links to kext repos used in my EFI folder. So in order to fetch updates for them, you need to add them to `KextURL.txt`.
 
 **Instructions**
 
