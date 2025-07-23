@@ -16,7 +16,7 @@
 - [Deployment](#deployment)
 - [Post-Install](#post-install)
 	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2+)
+	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2)
 	- [Enable Intel WiFi (macOS Sequoia)](#enable-intel-wifi-macos-sequoia)
 	- [Strengthen Security (optional)](#strengthen-security-optional)
 	- [Fixing Sleep issues](#fixing-sleep-issues)
@@ -29,6 +29,7 @@
 - [Maintenance](#maintenance)
 	- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
 - [Credits](#credits)
+
 
 ---
 
@@ -104,7 +105,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 		- USB Port Control: Enable all ports
 		- USB Device Control: Enable all devices
 - **System Management**
-	- Fan Control: Auto or Enhanced (better pperdormance, more fan activity)   
+	- Fan Control: Auto or Enhanced (better performance, more fan activity)   
 - **Super IO Configuration**
 	- Serial Port 1 Configuration
 		- Serial Port: Disabled
@@ -123,11 +124,11 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 	- Power Failure Recovery: Disabled
 	- USB/PS2 Power: Set as needed
 	- USB Type-C Connector Power Limit: Set as needed
-	- External Power Buttob Control: Enabled
+	- External Power Button Control: Enabled
 	- LAN: Disabled
 - **Boot** [TAB]
 	- New UEFI OS Option Policy: Place Last
-	- Boot Optiob Priorities:
+	- Boot Option Priorities:
 		- Boot Option #1: OpenCore
 		- Windows Boot Manager 
 </details>
