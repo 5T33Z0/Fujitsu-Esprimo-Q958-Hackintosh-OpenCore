@@ -16,7 +16,7 @@
 - [Deployment](#deployment)
 - [Post-Install](#post-install)
 	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2)
+	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2+)
 	- [Enable Intel WiFi (macOS Sequoia)](#enable-intel-wifi-macos-sequoia)
 	- [Strengthen Security (optional)](#strengthen-security-optional)
 	- [Fixing Sleep issues](#fixing-sleep-issues)
@@ -146,8 +146,8 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 ### Disable Gatekeeper (optional)
 I disable Gatekeeper on my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires [additional steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
 
-### Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2)
-Apple deleted the AppleHDA required for on-board audio in macOS 26 beta 2. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
+### Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)
+Apple deleted the `AppleHDA` component required for using analog on-board audio since macOS 26 beta 2. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
 
 ### Enable Intel WiFi (macOS Sequoia)
 In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with OpenCore Legacy Patcher.
