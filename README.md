@@ -16,7 +16,7 @@
 - [Deployment](#deployment)
 - [Post-Install](#post-install)
 	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2+)
+	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2+)
 	- [Enable Intel WiFi (macOS Sequoia)](#enable-intel-wifi-macos-sequoia)
 	- [Strengthen Security (optional)](#strengthen-security-optional)
 	- [Fixing Sleep issues](#fixing-sleep-issues)
