@@ -18,6 +18,7 @@
 	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
 	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2)
 	- [Enable Intel WiFi (macOS Sequoia)](#enable-intel-wifi-macos-sequoia)
+	- [Enabling audio in macOS Tahoe](#enabling-audio-in-macos-tahoe)
 	- [Strengthen Security (optional)](#strengthen-security-optional)
 	- [Fixing Sleep issues](#fixing-sleep-issues)
 	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
@@ -70,7 +71,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 
 > [!IMPORTANT]
 > 
-> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP).
+> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP). In macOS Tahoe it uses `itlwm.kext` since no root patches exist yet.
 
 ### Notable Features
 
@@ -80,7 +81,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 - [x] Added MMIO Whitelist entries.
 
 ## Issues
-- [ ] Another Small Form Factor PC with a Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`.
+- [ ] Another Small Form Factor PC with a Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`, so the system simply won't enter sleep.
 
 ## BIOS Settings
 
@@ -105,7 +106,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 		- USB Port Control: Enable all ports
 		- USB Device Control: Enable all devices
 - **System Management**
-	- Fan Control: Auto or Enhanced (better performance, more fan activity)   
+	- Fan Control: Auto or Enhanced (better performance, more fan activity)
 - **Super IO Configuration**
 	- Serial Port 1 Configuration
 		- Serial Port: Disabled
@@ -113,7 +114,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 	- Intel ANT: Disabled
 - **Network Stack Configuration**
 	- Network Stack: Enabled
-	- IPv4 PXE Support: Disabled      
+	- IPv4 PXE Support: Disabled
 	- IPv6 PXE Support: Disabled
 - **Graphic Configuration**
 	- Primary Display: Internal Graphics
@@ -145,7 +146,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 ## Post-Install
 
 ### Disable Gatekeeper (optional)
-I disable Gatekeeper on my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires [additional steps](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Guides/Disable_Gatekeeper.md).
+I disable Gatekeeper on my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
 ### Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)
 Apple deleted the `AppleHDA` component required for using analog on-board audio since macOS 26 beta 2. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
@@ -166,7 +167,11 @@ In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with
 
 > [!IMPORTANT]
 > 
-> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches before installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
+> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
+
+### Enabling audio in macOS Tahoe
+
+`AppleHDA` was removed from macOS 26 beta 2 onward, so analog on-board audio does not work out of the box &rarr; [Fix with OCLP Mod](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md).
 
 ###  Strengthen Security (optional)
 
