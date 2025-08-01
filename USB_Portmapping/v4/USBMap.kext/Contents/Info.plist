@@ -170,22 +170,22 @@
 					<key>SS05</key>
 					<dict>
 						<key>UsbConnector</key>
-						<integer>9</integer>
+						<integer>10</integer>
 						<key>port</key>
 						<data>FQAAAA==</data>
 						<key>usb-port-type</key>
-						<integer>9</integer>
+						<integer>10</integer>
 						<key>usb-port-number</key>
 						<data>FQAAAA==</data>
 					</dict>
 					<key>SS06</key>
 					<dict>
 						<key>UsbConnector</key>
-						<integer>9</integer>
+						<integer>10</integer>
 						<key>port</key>
 						<data>FgAAAA==</data>
 						<key>usb-port-type</key>
-						<integer>9</integer>
+						<integer>10</integer>
 						<key>usb-port-number</key>
 						<data>FgAAAA==</data>
 					</dict>
