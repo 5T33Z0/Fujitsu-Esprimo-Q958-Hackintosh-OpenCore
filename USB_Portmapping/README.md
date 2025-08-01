@@ -2,4 +2,4 @@
 
 ## USB Port Mapping (v4)
 
-![Ports_v4](https://github.com/user-attachments/assets/51aa68bd-76e6-47b7-9624-aa8ecb640f4d)
+![Ports_v4](https://github.com/user-attachments/assets/206b983b-c9bd-4a00-aaec-ee27da96f7fc)
