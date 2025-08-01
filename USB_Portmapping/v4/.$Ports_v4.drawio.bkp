@@ -148,7 +148,7 @@
         <mxCell id="XffVmL43JGJK0to86AQG-93" value="&lt;div&gt;&lt;b&gt;HS07&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeColor=light-dark(#037aff, #cdcdff);strokeWidth=2;" parent="XffVmL43JGJK0to86AQG-95" vertex="1">
           <mxGeometry x="100" y="16.5" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="XffVmL43JGJK0to86AQG-96" value="&lt;b&gt;USB Port Mapping &lt;/b&gt;v3.0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
+        <mxCell id="XffVmL43JGJK0to86AQG-96" value="&lt;b&gt;USB Port Mapping &lt;/b&gt;v4.0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;strokeColor=default;" parent="1" vertex="1">
           <mxGeometry x="1010" y="20" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="6h2Lkf4mZXPjVvOlvtYx-1" value="&lt;b&gt;HS &lt;/b&gt;=&lt;b&gt; &lt;/b&gt;USB 2.0&lt;div&gt;&lt;b&gt;SS &lt;/b&gt;= USB 3.1&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;color: rgb(255, 0, 0);&quot;&gt;RED&lt;/font&gt; &lt;/b&gt;= &lt;font style=&quot;color: rgb(255, 0, 0);&quot;&gt;not mapped&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeColor=none;strokeWidth=2;" parent="1" vertex="1">
