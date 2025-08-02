@@ -173,8 +173,11 @@ In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with
 
 `AppleHDA` was removed from macOS 26 beta 2 onward, so analog on-board audio does not work out of the box &rarr; [Fix with OCLP Mod](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md).
 
-###  Strengthen Security (optional)
+### Enable Intel WiFi (macOS Tahoe)
+- Since AirportItlwm no longer works in macOS Tahoe, Itlwm is used instead
+- So you need to use the [Heliport App](https://github.com/OpenIntelWireless/HeliPort) to connect to WiFi Access Points
 
+###  Strengthen Security (optional)
 In config.plist, navigate to Misc/Security/SecureBootModel and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4 it does not longer work correctly during install.
 
 ### Fixing Sleep issues
