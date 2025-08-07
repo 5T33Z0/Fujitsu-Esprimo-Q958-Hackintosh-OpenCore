@@ -88,48 +88,29 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 <details>
 <summary><b>Click to show BIOS settings</b></summary><br>
 
-Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Defaults") and then continue, adjusting the following settings:
+Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Defaults"). Next, adjust the following settings for booting macOS:
 
 - **Advanced** [TAB]
-	- Drive Configuration
+	- **Drive Configuration**
 		- OnBoard SATA Configuration
 			- SATA Mode: AHCI 
-- **CPU Configuration**
-	- Active Processor Cores: All
-	- Intel Virtualization Technology: Enable if you want to use virtualization in Microsoft Windows, otherwise disable it
-	- VT-D: same
-- **Trusted Computing**
-	- TPM Support: Disabled
-- **USB COnfiguration**
-	- USB 3.1 Gen 2 Speed: Enabled
-	- USB Port Security
-		- USB Port Control: Enable all ports
-		- USB Device Control: Enable all devices
-- **System Management**
-	- Fan Control: Auto or Enhanced (better performance, more fan activity)
-- **Super IO Configuration**
-	- Serial Port 1 Configuration
-		- Serial Port: Disabled
-- **AMT Configuration**
-	- Intel ANT: Disabled
-- **Network Stack Configuration**
-	- Network Stack: Enabled
-	- IPv4 PXE Support: Disabled
-	- IPv6 PXE Support: Disabled
-- **Graphic Configuration**
-	- Primary Display: Internal Graphics
-	- Internal Graphic: Enabled
-		- DVMT Shared Memory Size: 64 MB
-		- DVM Total Graphics Memory Size: Max
-- **Security** [Tab] 
+	- **Trusted Computing**
+		- TPM Support: Disabled
+	- **Super IO Configuration**
+		- Serial Port 1 Configuration
+			- Serial Port: Disabled
+	- **Network Stack Configuration**
+		- Network Stack: Enabled
+		- IPv4 PXE Support: Disabled
+		- IPv6 PXE Support: Disabled
+	- **Graphic Configuration**
+		- Primary Display: Internal Graphics
+		- Internal Graphic: Enabled
+			- DVMT Shared Memory Size: 64 MB
+			- DVM Total Graphics Memory Size: 256 MB
+- **Security** [TAB] 
     - Secure Boot Configuration:
         - Secure Boot Control: Disabled
-- **Power** [TAB]
-	- Power Failure Recovery: Disabled
-	- USB/PS2 Power: Set as needed
-	- USB Type-C Connector Power Limit: Set as needed
-	- External Power Button Control: Enabled
-	- LAN: Disabled
 - **Boot** [TAB]
 	- New UEFI OS Option Policy: Place Last
 	- Boot Option Priorities:
