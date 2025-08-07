@@ -121,6 +121,9 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 	- Internal Graphic: Enabled
 		- DVMT Shared Memory Size: 64 MB
 		- DVM Total Graphics Memory Size: Max
+- **Security** [Tab] 
+    - Secure Boot Configuration:
+        - Secure Boot Control: Disabled
 - **Power** [TAB]
 	- Power Failure Recovery: Disabled
 	- USB/PS2 Power: Set as needed
