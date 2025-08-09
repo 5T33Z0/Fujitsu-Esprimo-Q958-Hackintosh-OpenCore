@@ -31,7 +31,6 @@
 	- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
 - [Credits](#credits)
 
-
 ---
 
 ## About
@@ -100,9 +99,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 		- Serial Port 1 Configuration
 			- Serial Port: Disabled
 	- **Network Stack Configuration**
-		- Network Stack: Enabled
-		- IPv4 PXE Support: Disabled
-		- IPv6 PXE Support: Disabled
+		- Network Stack: Disabled
 	- **Graphic Configuration**
 		- Primary Display: Internal Graphics
 		- Internal Graphic: Enabled
