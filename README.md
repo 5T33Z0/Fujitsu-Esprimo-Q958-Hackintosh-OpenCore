@@ -104,7 +104,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 		- Primary Display: Internal Graphics
 		- Internal Graphic: Enabled
 			- DVMT Shared Memory Size: 64 MB
-			- DVM Total Graphics Memory Size: 256 MB
+			- DVM Total Graphics Memory Size: 256 MB (or MAX)
 - **Security** [TAB] 
     - Secure Boot Configuration:
         - Secure Boot Control: Disabled
