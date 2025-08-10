@@ -48,8 +48,8 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 **RAM**         | 32 GB DDR4 (2666 MHz)
 **Storage**     | WD Blue SN550 NVMe SSD       
 **NIC**         | Intel® I219-LM (1 Gbit)
-**WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Firmware: `ibt-18-16-1.sfi`, `ibt-18-16-1.ddc`
-**Sound**       | Realtek ALC671 (Layout-ID 16)
+**WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Firmware: <ul><li>`ibt-18-16-1.sfi` <li>`ibt-18-16-1.ddc`
+**Sound**       | Realtek ALC671 (Layout-ID: 16)
 **I/O**         | Serial Port (DE-9, disabled)
 **BIOS**        | R1.38.0 (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
@@ -90,21 +90,27 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Defaults"). Next, adjust the following settings for booting macOS:
 
 - **Advanced** [TAB]
+	- **CPU Configuration**
+		- **Package C State Limit**: 
+			- [**CPU Default**] = Causes the fan to ramp up much later at around at around 60° C. Use for a a lot more silent operation.
 	- **Drive Configuration**
 		- OnBoard SATA Configuration
-			- SATA Mode: AHCI 
+			- SATA Mode: **AHCI** 
 	- **Trusted Computing**
-		- TPM Support: Disabled
+		- TPM Support: **Disabled**
 	- **Super IO Configuration**
 		- Serial Port 1 Configuration
-			- Serial Port: Disabled
+			- Serial Port: **Disabled**
 	- **Network Stack Configuration**
-		- Network Stack: Disabled
+		- Network Stack: **Disabled**
 	- **Graphic Configuration**
 		- Primary Display: Internal Graphics
 		- Internal Graphic: Enabled
 			- DVMT Shared Memory Size: 64 MB
 			- DVM Total Graphics Memory Size: 256 MB (or MAX)
+	- **System Management**
+		- **Fan Control**: 
+			- [**Auto**]: Less aggressive fan activity
 - **Security** [TAB] 
     - Secure Boot Configuration:
         - Secure Boot Control: Disabled
