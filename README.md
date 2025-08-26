@@ -51,7 +51,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 **WiFi/BT**     | [Intel® Wireless-AC 9260](https://www.intel.de/content/www/de/de/products/sku/99445/intel-wirelessac-9260/specifications.html) 160MHz <ul> <li> WiFi Firmware: `iwm-9260-46` <li> BT Firmware: <ul><li>`ibt-18-16-1.sfi` <li>`ibt-18-16-1.ddc`
 **Sound**       | Realtek ALC671 (Layout-ID: 16)
 **I/O**         | Serial Port (DE-9, disabled)
-**BIOS**        | R1.38.0 (08/29/22024)
+**BIOS**        | [R1.38.0](https://support.ts.fujitsu.com/IndexDownload.asp?lng=de&OpenTab=) (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
 
 ## What works?
