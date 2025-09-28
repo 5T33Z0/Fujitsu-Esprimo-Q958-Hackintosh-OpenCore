@@ -53,6 +53,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 **I/O**         | Serial Port (DE-9, disabled)
 **BIOS**        | [R1.38.0](https://support.ts.fujitsu.com/IndexDownload.asp?lng=de&OpenTab=) (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
+**Support Files** | [Downloads for Esprimo Q958](https://support.ts.fujitsu.com/IndexDownload.asp?lng=en&OpenTab=)
 
 ## What works?
 
