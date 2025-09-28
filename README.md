@@ -131,6 +131,10 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
 - Enjoy
 
+> [!NOTE]
+>
+> If you are using macOS Sequoia and older, disable/delete the `unfairvgva7` boot-arg if you want to use AppleTV+ or Apple Music.
+
 ## Post-Install
 
 ### Disable Gatekeeper (optional)
