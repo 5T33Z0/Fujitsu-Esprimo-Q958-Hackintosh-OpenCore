@@ -133,7 +133,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 
 > [!NOTE]
 >
-> If you are using macOS Sequoia and older, disable/delete the `unfairvgva7` boot-arg if you want to use AppleTV+ or Apple Music.
+> When using macOS Sequoia or older, disable/delete the `unfairvgva7` boot-arg if you want to use AppleTV+ or Apple Music.
 
 ## Post-Install
 
