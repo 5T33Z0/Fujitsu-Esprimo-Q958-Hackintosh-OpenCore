@@ -261,7 +261,7 @@ OCAT does not contain all the links to kext repos used in my EFI folder. So in o
 4. Open `KextUrl.txt` with TextEdit
 5. Add the following entries:
 	```text
-	AdvancedMap.kext | https://github.com/narcyzzo/AdvancedMap
+	AdvancedMap.kext | https://github.com/notjosh/AdvancedMap
 	AMFIPass.kext | https://github.com/bluppus20/AMFIPass
 	IntelMausiEthernet.kext | https://github.com/Mieze/IntelMausiEthernet
 	```
