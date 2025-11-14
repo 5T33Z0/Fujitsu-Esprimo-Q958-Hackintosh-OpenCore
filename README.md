@@ -93,7 +93,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 - **Advanced** [TAB]
 	- **CPU Configuration**
 		- **Package C State Limit**: 
-			- [**CPU Default**] = Causes the fan to ramp up much later at around at around 60° C. Use for a a lot more silent operation.
+			- [**CPU Default**] = Causes the fan to ramp up much later at around at around 60° C. Set to `CPU Default` for a more silent operation.
 	- **Drive Configuration**
 		- OnBoard SATA Configuration
 			- SATA Mode: **AHCI** 
