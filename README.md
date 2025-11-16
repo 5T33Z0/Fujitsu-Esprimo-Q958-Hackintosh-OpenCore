@@ -1,39 +1,39 @@
 # Fujitsu Esprimo Q958 Mini Hackintosh OpenCore
 
-[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.6-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5_to_26_beta_7-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
+[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.7-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5_to_26.2-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
 
 <img src="https://github.com/user-attachments/assets/3fc086f2-1be3-4a90-83f9-efdc702d51d2" width="100%%" />
 
 ---
 **TABLE of CONTENTS**
 
-- [Fujitsu Esprimo Q958 Mini Hackintosh OpenCore](#fujitsu-esprimo-q958-mini-hackintosh-opencore)
-	- [About](#about)
-	- [System Specs](#system-specs)
-	- [What works?](#what-works)
-		- [Notable Features](#notable-features)
-	- [Issues](#issues)
-	- [BIOS Settings](#bios-settings)
-	- [Deployment](#deployment)
-	- [Post-Install](#post-install)
-		- [Recommended Measures](#recommended-measures)
-			- [Disable Sleep](#disable-sleep)
-			- [Disable CFG Lock (optional, recommended)](#disable-cfg-lock-optional-recommended)
-			- [Enable Intel WiFi](#enable-intel-wifi)
-				- [macOS Sequoia](#macos-sequoia)
-				- [macOS Tahoe](#macos-tahoe)
-			- [Enable audio in macOS Tahoe](#enable-audio-in-macos-tahoe)
-		- [Optional Measures](#optional-measures)
-			- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-			- [Strengthen Security (optional)](#strengthen-security-optional)
-			- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
-			- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
-	- [Geekbench 5 Results](#geekbench-5-results)
-		- [CPU](#cpu)
-		- [iGPU](#igpu)
-	- [Maintenance](#maintenance)
-		- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
-	- [Credits](#credits)
+- [About](#about)
+- [System Specs](#system-specs)
+- [What works?](#what-works)
+	- [Notable Features](#notable-features)
+- [Issues](#issues)
+- [BIOS Settings](#bios-settings)
+- [Deployment](#deployment)
+- [Post-Install](#post-install)
+	- [Mandatory Measures](#mandatory-measures)
+		- [Disable Sleep](#disable-sleep)
+		- [Enable Intel WiFi](#enable-intel-wifi)
+			- [macOS Sequoia](#macos-sequoia)
+			- [macOS Tahoe](#macos-tahoe)
+		- [Enable audio in macOS Tahoe](#enable-audio-in-macos-tahoe)
+		- [Note about root patching](#note-about-root-patching)
+	- [Optional Measures](#optional-measures)
+		- [Disable CFG Lock (optional, recommended)](#disable-cfg-lock-optional-recommended)
+		- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+		- [Strengthen Security (optional)](#strengthen-security-optional)
+		- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
+		- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
+- [Geekbench 5 Results](#geekbench-5-results)
+	- [CPU](#cpu)
+	- [iGPU](#igpu)
+- [Maintenance](#maintenance)
+	- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
+- [Credits](#credits)
 
 ---
 
@@ -137,12 +137,12 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 
 > [!NOTE]
 >
-> When using macOS Sequoia or older, disable/delete the `unfairvgva7` boot-arg if you want to use AppleTV+ or Apple Music.
+> When using macOS Sequoia or older, disable/delete the `unfairvgva=4` boot-arg if you want to use AppleTV+ or Apple Music.
 
 ## Post-Install
-This section contains post-install-measures to enabled features, workaround issues and some optional tweaks.
+This section contains post-install-measures to enable features, work around issues and some optional settings.
 
-### Recommended Measures
+### Mandatory Measures
 
 #### Disable Sleep
 
@@ -166,6 +166,32 @@ sudo pmset proximitywake 0
 >
 > If the black-screen-on-wake issue is ever resolved, you could [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
 
+#### Enable Intel WiFi 
+
+##### macOS Sequoia
+In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with either OpenCore Legacy Patcher or OCLP Mod.
+
+- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
+- Run OCLP and click the "Apply Root Patch" button
+- "Networking: Modern WiFi" should be available:<br>![intel_spoof05](https://github.com/user-attachments/assets/8b072d05-93f5-4151-b6e1-1d8e0c6c555e)
+- Click "Start Root Patching"
+- It will install the necessary Frameworks required for `AirportItlwm` to work:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
+- Reboot the system
+- Reset NVRAM
+- Boot into macOS Sequoia
+- WiFi should work now
+
+##### macOS Tahoe
+Since `AirportItlwm` no longer works in macOS Tahoe, `Itlwm` is used instead. In order to connect to Wi-Fi Hotspots you need to install the [Heliport App](https://github.com/OpenIntelWireless/HeliPort) to connect to WiFi Access Points
+
+#### Enable audio in macOS Tahoe
+Apple deleted the `AppleHDA` component required for using analog on-board audio from macOS 26 beta 2 onward. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
+
+#### Note about root patching
+Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
+
+### Optional Measures
+
 #### Disable CFG Lock (optional, recommended)
 - From Bootmenu, press space to show hidden tools
 - Select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
@@ -180,33 +206,6 @@ sudo pmset proximitywake 0
 >
 > Disabling CFG Lock this way is not a permanent fix. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it – otherwise macOS won't boot!
 
-#### Enable Intel WiFi 
-
-##### macOS Sequoia
-In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with either OpenCore Legacy Patcher.
-
-- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
-- Run OCLP and click the "Apply Root Patch" button
-- "Networking: Modern WiFi" should be available:<br>![intel_spoof05](https://github.com/user-attachments/assets/8b072d05-93f5-4151-b6e1-1d8e0c6c555e)
-- Click "Start Root Patching"
-- It will install the necessary Frameworks required for `AirportItlwm` to work:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
-- Reboot the system
-- Reset NVRAM
-- Boot into macOS Sequoia
-- WiFi should work now
-
-> [!IMPORTANT]
-> 
-> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
-
-##### macOS Tahoe
-Since `AirportItlwm` no longer works in macOS Tahoe, `Itlwm` is used instead. In order to connect to Wi-Fi Hotspots you need to install the [Heliport App](https://github.com/OpenIntelWireless/HeliPort) to connect to WiFi Access Points
-
-#### Enable audio in macOS Tahoe
-Apple deleted the `AppleHDA` component required for using analog on-board audio from macOS 26 beta 2 onward. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
-
-### Optional Measures
-
 #### Disable Gatekeeper (optional)
 I disable Gatekeeper on all my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
@@ -214,7 +213,6 @@ I disable Gatekeeper on all my systems by default, since it blocks running scrip
 In `config.plist`, navigate to `Misc/Security/SecureBootModel` and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4, it does not longer work correctly during install.
 
 #### Enable brightness control for external displays (optional)
-
 There's a new app called [**MonitorControl**](https://github.com/MonitorControl/MonitorControl) which allows controlling the brightness and contrast of attached external displays right from the menu bar and/or keyboard.
 
 #### Add Eject button for optical drive to Menu Bar (optional)
