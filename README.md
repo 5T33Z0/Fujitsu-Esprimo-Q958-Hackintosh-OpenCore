@@ -7,29 +7,33 @@
 ---
 **TABLE of CONTENTS**
 
-- [About](#about)
-- [System Specs](#system-specs)
-- [What works?](#what-works)
-	- [Notable Features](#notable-features)
-- [Issues](#issues)
-- [BIOS Settings](#bios-settings)
-- [Deployment](#deployment)
-- [Post-Install](#post-install)
-	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-	- [Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)](#fixing-on-board-audio-with-oclp-mod-macos-tahoe-beta-2)
-	- [Enable Intel WiFi (macOS Sequoia)](#enable-intel-wifi-macos-sequoia)
-	- [Enabling audio in macOS Tahoe](#enabling-audio-in-macos-tahoe)
-	- [Strengthen Security (optional)](#strengthen-security-optional)
-	- [Fixing Sleep issues](#fixing-sleep-issues)
-	- [Enable brightness control for external displays](#enable-brightness-control-for-external-displays)
-	- [Disable CFG Lock (optional)](#disable-cfg-lock-optional)
-	- [Add Eject button for optical drive to Menu Bar](#add-eject-button-for-optical-drive-to-menu-bar)
-- [Geekbench 5 Results](#geekbench-5-results)
-	- [CPU](#cpu)
-	- [iGPU](#igpu)
-- [Maintenance](#maintenance)
-	- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
-- [Credits](#credits)
+- [Fujitsu Esprimo Q958 Mini Hackintosh OpenCore](#fujitsu-esprimo-q958-mini-hackintosh-opencore)
+	- [About](#about)
+	- [System Specs](#system-specs)
+	- [What works?](#what-works)
+		- [Notable Features](#notable-features)
+	- [Issues](#issues)
+	- [BIOS Settings](#bios-settings)
+	- [Deployment](#deployment)
+	- [Post-Install](#post-install)
+		- [Recommended Measures](#recommended-measures)
+			- [Disable Sleep](#disable-sleep)
+			- [Disable CFG Lock (optional, recommended)](#disable-cfg-lock-optional-recommended)
+			- [Enable Intel WiFi](#enable-intel-wifi)
+				- [macOS Sequoia](#macos-sequoia)
+				- [macOS Tahoe](#macos-tahoe)
+			- [Enable audio in macOS Tahoe](#enable-audio-in-macos-tahoe)
+		- [Optional Measures](#optional-measures)
+			- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+			- [Strengthen Security (optional)](#strengthen-security-optional)
+			- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
+			- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
+	- [Geekbench 5 Results](#geekbench-5-results)
+		- [CPU](#cpu)
+		- [iGPU](#igpu)
+	- [Maintenance](#maintenance)
+		- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
+	- [Credits](#credits)
 
 ---
 
@@ -63,7 +67,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 - [x] iGPU
 - [x] SATA drive
 - [x] NVME drive
-- [x] USB Portmapping (USB 2, USB 3.1, USB C, Bluetooth )
+- [x] USB port mapping (USB 2, USB 3.1, USB C, Bluetooth)
 - [x] Ethernet
 - [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
 - [x] WLAN
@@ -81,7 +85,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 - [x] Added MMIO Whitelist entries.
 
 ## Issues
-- [ ] Another Small Form Factor PC with a Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`, so the system simply won't enter sleep.
+- [ ] Another Small Form Factor PC plagued with a Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`, so the system simply won't enter sleep.
 
 ## BIOS Settings
 
@@ -93,7 +97,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 - **Advanced** [TAB]
 	- **CPU Configuration**
 		- **Package C State Limit**: 
-			- [**CPU Default**] = Causes the fan to ramp up much later at around at around 60° C. Set to `CPU Default` for a more silent operation. Otherwise the fan goes ham once the screen saver kicks in.
+			- [**CPU Default**] &rarr; Causes the fan to ramp up much later at around at around 60° C. Set to `CPU Default` for a more silent operation. Otherwise the fan goes ham once the screensaver kicks in.
 	- **Drive Configuration**
 		- OnBoard SATA Configuration
 			- SATA Mode: **AHCI** 
@@ -136,43 +140,11 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 > When using macOS Sequoia or older, disable/delete the `unfairvgva7` boot-arg if you want to use AppleTV+ or Apple Music.
 
 ## Post-Install
+This section contains post-install-measures to enabled features, workaround issues and some optional tweaks.
 
-### Disable Gatekeeper (optional)
-I disable Gatekeeper on my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
+### Recommended Measures
 
-### Fixing On-Board Audio with OCLP Mod (macOS Tahoe beta 2+)
-Apple deleted the `AppleHDA` component required for using analog on-board audio since macOS 26 beta 2. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
-
-### Enable Intel WiFi (macOS Sequoia)
-In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with OpenCore Legacy Patcher.
-
-- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
-- Run OCLP
-- Click on "Apply Root Patch" button
-- "Networking: Modern WiFi" should be available:<br>![intel_spoof05](https://github.com/user-attachments/assets/8b072d05-93f5-4151-b6e1-1d8e0c6c555e)
-- Click "Start Root Patching"
-- It will install the necessary Frameworks required for `AirportItlwm` to work:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
-- Reboot the system
-- Reset NVRAM
-- Boot into macOS
-- WiFi should work now
-
-> [!IMPORTANT]
-> 
-> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
-
-### Enabling audio in macOS Tahoe
-
-`AppleHDA` was removed from macOS 26 beta 2 onward, so analog on-board audio does not work out of the box &rarr; [Fix with OCLP Mod](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md).
-
-### Enable Intel WiFi (macOS Tahoe)
-- Since AirportItlwm no longer works in macOS Tahoe, Itlwm is used instead
-- So you need to use the [Heliport App](https://github.com/OpenIntelWireless/HeliPort) to connect to WiFi Access Points
-
-###  Strengthen Security (optional)
-In config.plist, navigate to Misc/Security/SecureBootModel and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4 it does not longer work correctly during install.
-
-### Fixing Sleep issues
+#### Disable Sleep
 
 In order to prevent the most common issues with sleep, we will set it to `hibernatemode 0` (Suspend to RAM), write protect the sleep image using Terminal:
 
@@ -190,31 +162,62 @@ sudo pmset displaysleep 0
 sudo pmset powernap 0
 sudo pmset proximitywake 0
 ```
+> [!NOTE]
+>
+> If the black-screen-on-wake issue is ever resolved, you could [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
 
-For more info follow my my guide to [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes#enabling-hibernation-on-hackintosh-systems)
+#### Disable CFG Lock (optional, recommended)
+- From Bootmenu, press space to show hidden tools
+- Select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
+- Follow the on-screen Instructions to disable CFGLock (set it to `0`)
+- Quit the tool
+- Boot into macOS
+- Mount EFI partition and open your `config.plist`
+- Disable Kernel Quirk `AppleXcpmCfgLock`
+- Save your config and reboot
 
 > [!NOTE]
 >
-> This is irrelevant for now, since the blackscreen-on-wake issue is not resolved yet.
+> Disabling CFG Lock this way is not a permanent fix. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it – otherwise macOS won't boot!
 
-### Enable brightness control for external displays
+#### Enable Intel WiFi 
+
+##### macOS Sequoia
+In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with either OpenCore Legacy Patcher.
+
+- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
+- Run OCLP and click the "Apply Root Patch" button
+- "Networking: Modern WiFi" should be available:<br>![intel_spoof05](https://github.com/user-attachments/assets/8b072d05-93f5-4151-b6e1-1d8e0c6c555e)
+- Click "Start Root Patching"
+- It will install the necessary Frameworks required for `AirportItlwm` to work:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
+- Reboot the system
+- Reset NVRAM
+- Boot into macOS Sequoia
+- WiFi should work now
+
+> [!IMPORTANT]
+> 
+> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
+
+##### macOS Tahoe
+Since `AirportItlwm` no longer works in macOS Tahoe, `Itlwm` is used instead. In order to connect to Wi-Fi Hotspots you need to install the [Heliport App](https://github.com/OpenIntelWireless/HeliPort) to connect to WiFi Access Points
+
+#### Enable audio in macOS Tahoe
+Apple deleted the `AppleHDA` component required for using analog on-board audio from macOS 26 beta 2 onward. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
+
+### Optional Measures
+
+#### Disable Gatekeeper (optional)
+I disable Gatekeeper on all my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
+
+####  Strengthen Security (optional)
+In `config.plist`, navigate to `Misc/Security/SecureBootModel` and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4, it does not longer work correctly during install.
+
+#### Enable brightness control for external displays (optional)
 
 There's a new app called [**MonitorControl**](https://github.com/MonitorControl/MonitorControl) which allows controlling the brightness and contrast of attached external displays right from the menu bar and/or keyboard.
 
-### Disable CFG Lock (optional)
-- From Bootmenu, select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
-- Follow the on-screen Instrutions to disable CFGLock (set it to `0`)
-- Quit the tool
-- Boot macOS
-- Mount EFI partition and open your `config.plist`
-- Disable Kernel Quirk `AppleXcpmCfgLock`
-- Save your config an reboot
-
-> [!NOTE]
->
-> Disabling CFG Lock in this ways is not permanent. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it!
-
-### Add Eject button for optical drive to Menu Bar
+#### Add Eject button for optical drive to Menu Bar (optional)
 macOS locks the optical drive sometimes so that you can't open it by pressing the physical eject button – even if no media is present. If you have an Apple Keyboard, you can simply press the <kbd>Eject</kbd> key to open the drive. 
 
 But if you don't, you can add an Eject button to the menu bar: 
