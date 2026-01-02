@@ -187,6 +187,10 @@ Since `AirportItlwm` no longer works in macOS Tahoe, `Itlwm` is used instead. In
 #### Enable audio in macOS Tahoe
 Apple deleted the `AppleHDA` component required for using analog on-board audio from macOS 26 beta 2 onward. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
 
+[!IMPORTANT]
+
+Use OCLP-Mod v[2.6.9](https://github.com/laobamac/OCLP-Mod/releases/tag/2.6.9), not v 3.x.x! Because version 3 applies patches for Broadcom Cards automatically, even when using Intel Cards and this wil break macOS afterwards!
+
 #### Note about root patching
 Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
 
