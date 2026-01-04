@@ -63,19 +63,19 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 
 - [x] OS:
   - [x] macOS Sonoma+
-  - [x] Windows 
+  - [x] Windows 10+
 - [x] iGPU
 - [x] SATA drive
 - [x] NVME drive
 - [x] USB port mapping (USB 2, USB 3.1, USB C, Bluetooth)
 - [x] Ethernet
 - [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
-- [x] WLAN
+- [x] Intel Wi-Fi
 - [x] Bluetooth
 
 > [!IMPORTANT]
 > 
-> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OpenCore Legacy Patcher (OCLP). In macOS Tahoe it uses `itlwm.kext` since no root patches exist yet.
+> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OCLP-Mod. 
 
 ### Notable Features
 
@@ -83,9 +83,10 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 - [x] 3D Globe in Apple Maps.
 - [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
 - [x] Added MMIO Whitelist entries.
+- [x] USB Port Mapping via ACPI to maximize compatibility
 
 ## Issues
-- [ ] Another Small Form Factor PC plagued with a Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`, so the system simply won't enter sleep.
+- [ ] Another Small Form Factor PC plagued by the infamous Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`, so the system simply won't enter sleep.
 
 ## BIOS Settings
 
@@ -166,30 +167,23 @@ sudo pmset proximitywake 0
 >
 > If the black-screen-on-wake issue is ever resolved, you could [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
 
-#### Enable Intel WiFi 
+#### Enable Intel WiFi
 
-##### macOS Sequoia
-In order for Wi-Fi to work in macOS Sequoia, you have to apply root patches with either OpenCore Legacy Patcher or OCLP Mod.
+##### macOS Sequoia/Tahoe
+In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patches with either OpenCore Legacy Patcher or OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources.
 
-- [Download the latest release of OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher/releases) _before_ booting into macOS Sequoia
-- Run OCLP and click the "Apply Root Patch" button
-- "Networking: Modern WiFi" should be available:<br>![intel_spoof05](https://github.com/user-attachments/assets/8b072d05-93f5-4151-b6e1-1d8e0c6c555e)
-- Click "Start Root Patching"
-- It will install the necessary Frameworks required for `AirportItlwm` to work:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
+- [Download the latest release of OCLP-Mod](https://github.com/laobamac/OCLP-Mod/releases) _before_ booting into macOS Sequoia
+- Install and run OCLP-Mod
+- Click the top right button:<br> <img width="600" height="331" alt="patch01" src="https://github.com/user-attachments/assets/19dc7610-829c-4bd5-9e99-a0938331b50e" />
+- It should say "Intel" somewhere in the Chines text of the Patches that will be applied:<br><img width="603" height="332" alt="oclpmod_intel01" src="https://github.com/user-attachments/assets/f49ecc37-e644-4e67-851b-f54fce640935" />
+- Click the first button from the top to start root patching.
+- Additional files required for patching will be downloadded automatically:<br><img width="415" height="288" alt="oclpmod_intel02" src="https://github.com/user-attachments/assets/391d5440-d3f4-4629-9dbb-e13fe511cbdd" />
+- Once that's done, patching will commence:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
 - Reboot the system
 - Reset NVRAM
 - Boot into macOS Sequoia
 - WiFi should work now
-
-##### macOS Tahoe
-Since `AirportItlwm` no longer works in macOS Tahoe, `Itlwm` is used instead. In order to connect to Wi-Fi Hotspots you need to install the [Heliport App](https://github.com/OpenIntelWireless/HeliPort) to connect to WiFi Access Points
-
-#### Enable audio in macOS Tahoe
-Apple deleted the `AppleHDA` component required for using analog on-board audio from macOS 26 beta 2 onward. Since there's no official OCLP version available for macOS Tahoe yet, we are going to use [**OCLP Mod**](https://github.com/laobamac/OCLP-Mod/) to apply root patches – which will also install AppleHDA, thereby re-enabling audio. (&rarr; [Instructions](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md#instructions))
-
-[!IMPORTANT]
-
-Use OCLP-Mod v[2.6.9](https://github.com/laobamac/OCLP-Mod/releases/tag/2.6.9), not v 3.x.x! Because version 3 applies patches for Broadcom Cards automatically, even when using Intel Cards and this wil break macOS afterwards!
+- Audio should work now as well (macOS Tahoe only)
 
 #### Note about root patching
 Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
