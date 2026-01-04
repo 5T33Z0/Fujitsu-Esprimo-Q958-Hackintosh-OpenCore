@@ -7,33 +7,32 @@
 ---
 **TABLE of CONTENTS**
 
-- [About](#about)
-- [System Specs](#system-specs)
-- [What works?](#what-works)
-	- [Notable Features](#notable-features)
-- [Issues](#issues)
-- [BIOS Settings](#bios-settings)
-- [Deployment](#deployment)
-- [Post-Install](#post-install)
-	- [Mandatory Measures](#mandatory-measures)
-		- [Disable Sleep](#disable-sleep)
-		- [Enable Intel WiFi](#enable-intel-wifi)
-			- [macOS Sequoia](#macos-sequoia)
-			- [macOS Tahoe](#macos-tahoe)
-		- [Enable audio in macOS Tahoe](#enable-audio-in-macos-tahoe)
-		- [Note about root patching](#note-about-root-patching)
-	- [Optional Measures](#optional-measures)
-		- [Disable CFG Lock (optional, recommended)](#disable-cfg-lock-optional-recommended)
-		- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-		- [Strengthen Security (optional)](#strengthen-security-optional)
-		- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
-		- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
-- [Geekbench 5 Results](#geekbench-5-results)
-	- [CPU](#cpu)
-	- [iGPU](#igpu)
-- [Maintenance](#maintenance)
-	- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
-- [Credits](#credits)
+- [Fujitsu Esprimo Q958 Mini Hackintosh OpenCore](#fujitsu-esprimo-q958-mini-hackintosh-opencore)
+	- [About](#about)
+	- [System Specs](#system-specs)
+	- [What works?](#what-works)
+		- [Notable Features](#notable-features)
+	- [Issues](#issues)
+	- [BIOS Settings](#bios-settings)
+	- [Deployment](#deployment)
+	- [Post-Install](#post-install)
+		- [Mandatory Measures](#mandatory-measures)
+			- [Disable Sleep](#disable-sleep)
+			- [Enable Intel WiFi](#enable-intel-wifi)
+				- [macOS Sequoia/Tahoe](#macos-sequoiatahoe)
+			- [Note about root patching](#note-about-root-patching)
+		- [Optional Measures](#optional-measures)
+			- [Disable CFG Lock (optional, recommended)](#disable-cfg-lock-optional-recommended)
+			- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+			- [Strengthen Security (optional)](#strengthen-security-optional)
+			- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
+			- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
+	- [Geekbench 5 Results](#geekbench-5-results)
+		- [CPU](#cpu)
+		- [iGPU](#igpu)
+	- [Maintenance](#maintenance)
+		- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
+	- [Credits](#credits)
 
 ---
 
@@ -170,9 +169,9 @@ sudo pmset proximitywake 0
 #### Enable Intel WiFi
 
 ##### macOS Sequoia/Tahoe
-In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patches with either OpenCore Legacy Patcher or OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources.
+In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patches with either OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources.
 
-- [Download the latest release of OCLP-Mod](https://github.com/laobamac/OCLP-Mod/releases) _before_ booting into macOS Sequoia
+- [Download the latest release of OCLP-Mod](https://github.com/laobamac/OCLP-Mod/releases)
 - Install and run OCLP-Mod
 - Click the top right button:<br> <img width="600" height="331" alt="patch01" src="https://github.com/user-attachments/assets/19dc7610-829c-4bd5-9e99-a0938331b50e" />
 - It should say "Intel" somewhere in the Chines text of the Patches that will be applied:<br><img width="603" height="332" alt="oclpmod_intel01" src="https://github.com/user-attachments/assets/f49ecc37-e644-4e67-851b-f54fce640935" />
