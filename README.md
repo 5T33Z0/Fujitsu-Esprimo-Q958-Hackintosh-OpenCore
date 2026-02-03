@@ -16,7 +16,7 @@
 - [Deployment](#deployment)
 - [Post-Install](#post-install)
 	- [Mandatory Measures](#mandatory-measures)
-		- [Disable Sleep](#disable-sleep)
+		- [Adjust pmset](#adjust-pmset)
 		- [Enable Intel WiFi](#enable-intel-wifi)
 			- [macOS Sequoia/Tahoe](#macos-sequoiatahoe)
 		- [Note about root patching](#note-about-root-patching)
