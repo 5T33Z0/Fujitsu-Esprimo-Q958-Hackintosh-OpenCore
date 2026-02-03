@@ -125,13 +125,14 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
 - Extract it
 - Open the `config.plist` with [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases) 
-- Go to `Misc/Tools` and set `Ebabled` to `true`
-- Go to `PlatformInfo/generic`. Press "Generate" to create Serials, MLB etc.  (oru se [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
+- Go to `Misc/Tools` and set enable the `CFGLock` tool.
+- Next, go to `PlatformInfo/generic`. Press "Generate" to create Serials, MLB etc. (or use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 - Save the `config.plist`
-- Copy the EFI folder to a FAT32 formatted USB flash drive
-- Boot macOS from the USB flash drive via the BIOS Boot Menu (F12)
-- If the folder works then copy it to your internal disk and adjust the boot order in BIOS
-- Enjoy
+- Copy the EFI folder to a FAT32 formatted USB flash drive and reboot
+- Press <kbd>F12</kbd> to enter the BIOS Boot Menu
+- Select the USB Flash Drive and press <kbd>Enter</kbd> to run OpenCore
+
+Continue with the next section, "Disable CFG Lock"
 
 > [!NOTE]
 >
@@ -144,8 +145,7 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 - Quit the tool
 - Boot into macOS
 - Mount EFI partition and open your `config.plist`
-- Disable Kernel Quirk `AppleXcpmCfgLock`, if enabled
-- Disable the CFGLock Tool (`Misc/Tools`)
+- Disable the `CFGLock` Tool (`Misc/Tools`)
 - Save your config and reboot
 
 > [!IMPORTANT]
