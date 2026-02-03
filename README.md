@@ -70,6 +70,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 - [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
 - [x] Intel Wi-Fi
 - [x] Bluetooth
+- [x] Sleep and Wake
 
 > [!IMPORTANT]
 > 
@@ -78,13 +79,9 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 ### Notable Features
 
 - [x] All 3 Graphics ports are working (`con0` = DVI, `con1` = DP1 (bottom), `con3` = DP2 (Top))
+- [x] USB Port Mapping via ACPI to maximize compatibility
 - [x] 3D Globe in Apple Maps.
 - [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
-- [x] Added MMIO Whitelist entries.
-- [x] USB Port Mapping via ACPI to maximize compatibility
-
-## Issues
-- [ ] Another Small Form Factor PC plagued by the infamous Black-Screen-on-Wake issue. No known fixes yet. **Workaround**: Disable `displaysleep`, so the system simply won't enter sleep.
 
 ## BIOS Settings
 
