@@ -143,27 +143,19 @@ This section contains post-install-measures to enable features, work around issu
 
 ### Mandatory Measures
 
-#### Disable Sleep
-
-In order to prevent the most common issues with sleep, we will set it to `hibernatemode 0` (Suspend to RAM), write protect the sleep image using Terminal:
-
-```bash
-sudo pmset -a hibernatemode 0
-sudo rm /var/vm/sleepimage
-sudo touch /var/vm/sleepimage
-sudo chflags uchg /var/vm/sleepimage
-```
-
-Next, we disable `displaysleep` and `powernap` to workaround the black-screen-on-wake issue. And since this Mini-PC does not have a motion sensor, we also disable proximitywake: 
+#### Adjust pmset
+Open Terminal and enter the following commands, to adjust Power Management. This disables PowerNap and Proximitywake which is onl required for Laptops:
 
 ```bash 
-sudo pmset displaysleep 0
 sudo pmset powernap 0
 sudo pmset proximitywake 0
 ```
+
+Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the mouse or press a key on the keyboard. The system should wake and the screen(s) should wake when using HibernateMode 3 and 25.
+
 > [!NOTE]
 >
-> If the black-screen-on-wake issue is ever resolved, you could [configure hibernation](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
+> For more configuration options, follow my [hibernation configuration guide](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
 
 #### Enable Intel WiFi
 
