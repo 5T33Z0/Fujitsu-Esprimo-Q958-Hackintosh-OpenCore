@@ -11,22 +11,19 @@
 - [System Specs](#system-specs)
 - [What works?](#what-works)
 	- [Notable Features](#notable-features)
-- [Issues](#issues)
 - [BIOS Settings](#bios-settings)
 - [Deployment](#deployment)
+	- [Prepare EFI](#prepare-efi)
+	- [Disable CFG Lock](#disable-cfg-lock)
+	- [macOS Installation](#macos-installation)
 - [Post-Install](#post-install)
-	- [Mandatory Measures](#mandatory-measures)
-		- [Adjust pmset](#adjust-pmset)
-		- [Enable Intel WiFi](#enable-intel-wifi)
-			- [macOS Sequoia/Tahoe](#macos-sequoiatahoe)
-		- [Note about root patching](#note-about-root-patching)
-	- [Optional Measures](#optional-measures)
-		- [Disable CFG Lock (optional, recommended)](#disable-cfg-lock-optional-recommended)
-		- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-		- [Strengthen Security (optional)](#strengthen-security-optional)
-		- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
-		- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
-- [Geekbench 5 Results](#geekbench-5-results)
+	- [Enable Intel WiFi in macOS Sequoia/Tahoe](#enable-intel-wifi-in-macos-sequoiatahoe)
+	- [Modify Power Management Settings](#modify-power-management-settings)
+	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+	- [Strengthen Security (optional)](#strengthen-security-optional)
+	- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
+	- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
+- [Geekbench 5 Benchmarking Results](#geekbench-5-benchmarking-results)
 	- [CPU](#cpu)
 	- [iGPU](#igpu)
 - [Maintenance](#maintenance)
@@ -123,9 +120,14 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 </details>
 
 ## Deployment
+
+### Prepare EFI
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
 - Extract it
-- Open the `config.plist`, add Serials, MLB etc. with [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases) (in Dev Mode) or [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) and save it
+- Open the `config.plist` with [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases) 
+- Go to `Misc/Tools` and set `Ebabled` to `true`
+- Go to `PlatformInfo/generic`. Press "Generate" to create Serials, MLB etc.  (oru se [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
+- Save the `config.plist`
 - Copy the EFI folder to a FAT32 formatted USB flash drive
 - Boot macOS from the USB flash drive via the BIOS Boot Menu (F12)
 - If the folder works then copy it to your internal disk and adjust the boot order in BIOS
@@ -135,28 +137,31 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 >
 > When using macOS Sequoia or older, disable/delete the `unfairvgva=4` boot-arg if you want to use AppleTV+ or Apple Music.
 
+### Disable CFG Lock
+- In the OC Bootmenu, press space bar to show hidden tools
+- Select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
+- Follow the on-screen Instructions to disable CFGLock (set it to `0`)
+- Quit the tool
+- Boot into macOS
+- Mount EFI partition and open your `config.plist`
+- Disable Kernel Quirk `AppleXcpmCfgLock`, if enabled
+- Disable the CFGLock Tool (`Misc/Tools`)
+- Save your config and reboot
+
+> [!IMPORTANT]
+>
+> Disabling CFG Lock this way is not a persistent. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it – otherwise macOS won't boot without the `AppleXcpmCfgLock` Quirk.
+
+### macOS Installation
+* Put the EFI folder at the root of a FAT32-formatted USB flash drive. You can boot OpenCore from it
+* To create a macOS USB installer, follow Dortania’s [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/#making-the-installer)
+
+
 ## Post-Install
 This section contains post-install-measures to enable features, work around issues and some optional settings.
 
-### Mandatory Measures
+### Enable Intel WiFi in macOS Sequoia/Tahoe
 
-#### Adjust pmset
-Open Terminal and enter the following commands, to adjust Power Management. This disables PowerNap and Proximitywake which is onl required for Laptops:
-
-```bash 
-sudo pmset powernap 0
-sudo pmset proximitywake 0
-```
-
-Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the mouse or press a key on the keyboard. The system should wake and the screen(s) should wake when using HibernateMode 3 and 25.
-
-> [!NOTE]
->
-> For more configuration options, follow my [hibernation configuration guide](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
-
-#### Enable Intel WiFi
-
-##### macOS Sequoia/Tahoe
 In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patches with either OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources.
 
 - [Download the latest release of OCLP-Mod](https://github.com/laobamac/OCLP-Mod/releases)
@@ -171,35 +176,34 @@ In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patche
 - Boot into macOS Sequoia/Tahoe
 - WiFi should work now, so should Audio (applies to macOS Tahoe only)
 
-#### Note about root patching
-Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an OS update is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
+>[!IMPORTANT]
+>
+> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an update for macOS is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
 
-### Optional Measures
+### Modify Power Management Settings
+Open Terminal and enter the following commands, to adjust Power Management. This disables PowerNap and proximitywake which is onl required for Laptops:
 
-#### Disable CFG Lock (optional, recommended)
-- From Bootmenu, press space to show hidden tools
-- Select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
-- Follow the on-screen Instructions to disable CFGLock (set it to `0`)
-- Quit the tool
-- Boot into macOS
-- Mount EFI partition and open your `config.plist`
-- Disable Kernel Quirk `AppleXcpmCfgLock`
-- Save your config and reboot
+```bash 
+sudo pmset powernap 0
+sudo pmset proximitywake 0
+```
+
+Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the mouse or press a key on the keyboard. The system should wake and the screen(s) should wake when using HibernateMode 3 and 25.
 
 > [!NOTE]
 >
-> Disabling CFG Lock this way is not a permanent fix. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it – otherwise macOS won't boot!
+> For more configuration options, follow my [hibernation configuration guide](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
 
-#### Disable Gatekeeper (optional)
+### Disable Gatekeeper (optional)
 I disable Gatekeeper on all my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
-####  Strengthen Security (optional)
+###  Strengthen Security (optional)
 In `config.plist`, navigate to `Misc/Security/SecureBootModel` and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4, it does not longer work correctly during install.
 
-#### Enable brightness control for external displays (optional)
+### Enable brightness control for external displays (optional)
 There's a new app called [**MonitorControl**](https://github.com/MonitorControl/MonitorControl) which allows controlling the brightness and contrast of attached external displays right from the menu bar and/or keyboard.
 
-#### Add Eject button for optical drive to Menu Bar (optional)
+### Add Eject button for optical drive to Menu Bar (optional)
 macOS locks the optical drive sometimes so that you can't open it by pressing the physical eject button – even if no media is present. If you have an Apple Keyboard, you can simply press the <kbd>Eject</kbd> key to open the drive. 
 
 But if you don't, you can add an Eject button to the menu bar: 
@@ -207,7 +211,7 @@ But if you don't, you can add an Eject button to the menu bar:
 - Open Finder and navigate to: `System/Library/CoreServices/Menu Extras`
 - Double-click on `Eject.menu`. This adds the Eject button icon to the Menu Bar: <br>![Eject](https://github.com/user-attachments/assets/9ed29614-d4e8-48f6-a2a1-93b48a6d36da)
 
-## Geekbench 5 Results
+## Geekbench 5 Benchmarking Results
 
 ### CPU
 
