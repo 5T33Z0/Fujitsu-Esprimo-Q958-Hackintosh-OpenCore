@@ -75,6 +75,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 
 ### Notable Features
 
+- [x] Hibernation fully working (Modes 3 and 25)
 - [x] All 3 Graphics ports are working (`con0` = DVI, `con1` = DP1 (bottom), `con3` = DP2 (Top))
 - [x] USB Port Mapping via ACPI to maximize compatibility
 - [x] 3D Globe in Apple Maps.
