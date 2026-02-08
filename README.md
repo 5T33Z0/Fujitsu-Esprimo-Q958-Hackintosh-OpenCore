@@ -12,6 +12,7 @@
 - [What works?](#what-works)
 	- [Notable Features](#notable-features)
 - [BIOS Settings](#bios-settings)
+- [EFI Folder Contents](#efi-folder-content)
 - [Deployment](#deployment)
 	- [Prepare EFI](#prepare-efi)
 	- [Disable CFG Lock](#disable-cfg-lock)
@@ -118,6 +119,66 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 	- Boot Option Priorities:
 		- Boot Option #1: OpenCore
 		- Windows Boot Manager 
+</details>
+
+## EFI Folder Content
+
+<details>
+<summary><strong>Click to show</strong></summary><br>
+
+
+```
+EFI
+├── BOOT
+│   └── BOOTx64.efi
+└── OC
+    ├── ACPI
+    │   ├── DMAR.aml
+    │   ├── SSDT-EC.aml
+    │   ├── SSDT-MCHC.aml
+    │   ├── SSDT-OSDW.aml
+    │   ├── SSDT-PLUG.aml
+    │   ├── SSDT-PMC.aml
+    │   ├── SSDT-RTCAWAC
+    │   ├── SSDT-SBUS.aml
+    │   ├── SSDT-USBX.aml
+    │   └── SSDT-XHUB.aml
+    ├── Drivers
+    │   ├── HfsPlus.efi
+    │   ├── OpenCanopy.efi
+    │   ├── OpenRuntime.efi
+    │   └── ResetNvramEntry.efi
+    ├── Kexts
+    │   ├── AdvancedMap.kext (macOS 12+)
+    │   ├── AirportItlwm_Sequoia.kext
+    │   ├── AirportItlwm_Sonoma.kext
+    │   ├── AMFIPass.kext (macOS 12+)
+    │   ├── AppleALC.kext
+    │   ├── BlueToolFixup.kext (macOS 12+)
+    │   ├── CPUFriend.kext
+    │   ├── CPUFriendDataProvider.kext
+    │   ├── IntelBluetoothFirmware.kext
+    │   ├── IntelBTPatcher.kext
+    │   ├── IntelMausiEthernet.kext
+    │   ├── IO80211FamilyLegacy.kext (macOS 14+)
+    │   ├── IOSkywalkFamily.kext (macOS 14+)
+    │   ├── itlwm.kext
+    │   ├── Lilu.kext
+    │   ├── NVMeFix.kext
+    │   ├── RestrictEvents.kext (macOS 11+)
+    │   ├── SMCProcessor.kext
+    │   ├── SMCSuperIO.kext
+    │   ├── VirtualSMC.kext
+    │   └── WhateverGreen.kext
+    ├── OpenCore.efi
+    ├── Resources (NOTE: shows sub-folders only, no files)
+    │   ├── Font
+    │   └── Image
+    │       └── Acidanthera
+    │       │   └── GoldenGate
+    │       └── Label
+    └── config.plist
+```
 </details>
 
 ## Deployment
