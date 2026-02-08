@@ -12,7 +12,7 @@
 - [What works?](#what-works)
 	- [Notable Features](#notable-features)
 - [BIOS Settings](#bios-settings)
-- [EFI Folder Contents](#efi-folder-content)
+- [EFI Folder Content](#efi-folder-content)
 - [Deployment](#deployment)
 	- [Prepare EFI](#prepare-efi)
 	- [Disable CFG Lock](#disable-cfg-lock)
