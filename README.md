@@ -291,9 +291,11 @@ But if you don't, you can add an Eject button to the menu bar:
 
 ### iGPU
 
+**macOS**:
+
 Metal | OpenCL | RPS Control
 :----:|:------:|:------------:
-[**4941**](https://browser.geekbench.com/v5/compute/6868138)| [**5341**](https://browser.geekbench.com/v5/compute/6868141) | **ON**
+[**4941**](https://browser.geekbench.com/v5/compute/6868138) | [**5341**](https://browser.geekbench.com/v5/compute/6868141) | **ON**
 [4776](https://browser.geekbench.com/v5/compute/6868144) | [4995](https://browser.geekbench.com/v5/compute/6868143) | OFF
 
 I also tested force-loading Apple's GUC firmware ([4858 points in the Metal test](https://browser.geekbench.com/v5/compute/6872229/claim?key=253757)), but that's no usable option for me since it causes Firefox Tabs to crash. It has no impact on Safari, though.
@@ -302,6 +304,12 @@ I also tested force-loading Apple's GUC firmware ([4858 points in the Metal test
 >
 > - If iGPU performance is sufficient for your needs and you want a nearly silent operation of the system, disable the `rps-control` property by changing it to `00000000`
 > - If you need higher iGPU performance, enable `rps-control` by changing the value to `01000000`. But this will increase temps which results in more fan activity.
+
+**Windows 10** 
+
+Vulkan | OpenCL | 
+:----:|:------:|
+[**6657**](https://browser.geekbench.com/v5/compute/6925530) | [6380](https://browser.geekbench.com/v5/compute/6925529) 
 
 ## Maintenance
 
