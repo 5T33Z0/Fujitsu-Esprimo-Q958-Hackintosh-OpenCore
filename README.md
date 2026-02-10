@@ -277,9 +277,17 @@ But if you don't, you can add an Eject button to the menu bar:
 
 ### CPU
 
+**macOS**:
+
 ![gb5_sonoma](https://github.com/user-attachments/assets/88c6bd9b-4439-4b85-98e2-81dcdf675da9)
 
-**Full result**: [https://browser.geekbench.com/v5/cpu/23512366](https://browser.geekbench.com/v5/cpu/23512366)
+**Test results**: [https://browser.geekbench.com/v5/cpu/23512366](https://browser.geekbench.com/v5/cpu/23512366)
+
+**Windows 10**:
+
+<img width="854" height="334" alt="Win10_GB5" src="https://github.com/user-attachments/assets/2d3c1e89-ca49-452c-8130-dcecab4b2461" />
+
+**Test results**: [https://browser.geekbench.com/v5/cpu/24103178](https://browser.geekbench.com/v5/cpu/24103178)
 
 ### iGPU
 
