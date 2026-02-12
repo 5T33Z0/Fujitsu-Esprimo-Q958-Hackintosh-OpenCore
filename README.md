@@ -218,7 +218,6 @@ Continue with the next section, "Disable CFG Lock"
 * Put the EFI folder at the root of a FAT32-formatted USB flash drive. You can boot OpenCore from it
 * To create a macOS USB installer, follow Dortania’s [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/#making-the-installer)
 
-
 ## Post-Install
 This section contains post-install-measures to enable features, work around issues and some optional settings.
 
@@ -243,11 +242,37 @@ In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patche
 > Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an update for macOS is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
 
 ### Modify Power Management Settings
-Open Terminal and enter the following commands, to adjust Power Management. This disables PowerNap and proximitywake which is onl required for Laptops:
+Open Terminal and enter the following commands, to adjust Power Management. If you don't want to use Hibernation, use `hibernatemode 3` instead:
 
-```bash 
-sudo pmset powernap 0
-sudo pmset proximitywake 0
+```
+# Enable hibernatemode 25 (sleep to disk, power off RAM)
+
+sudo pmset -a hibernatemode 25 
+
+# Enable standby (required for hibernation to actually work)
+
+sudo pmset -a standby 1
+
+# Enable autopoweroff (transition to hibernation)
+
+sudo pmset -a autopoweroff 1
+
+# Set autopoweroff delay to 5 minutes (300 seconds)
+
+sudo pmset -a autopoweroffdelay 300
+
+# Set standby delays (time before entering standby/hibernation)
+
+sudo pmset -a standbydelayhigh 600    # 10 minutes when battery > 50%
+sudo pmset -a standbydelaylow 600     # 10 minutes when battery < 50%
+
+# Disable wake-causing features
+
+sudo pmset -a powernap 0              # Disable Power Nap (prevents background wake)
+sudo pmset -a tcpkeepalive 0          # Prevent network from waking system
+sudo pmset -a proximitywake 0         # Disable wake when iPhone/iPad nearby
+sudo pmset -a ttyskeepawake 0         # Prevent remote login sessions from preventing sleep
+sudo pmset -a womp 0                  # Disable wake-on-magic-packet (wake-on-LAN)
 ```
 
 Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the mouse or press a key on the keyboard. The system should wake and the screen(s) should wake when using HibernateMode 3 and 25.
