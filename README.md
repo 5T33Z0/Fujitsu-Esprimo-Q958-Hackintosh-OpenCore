@@ -275,7 +275,7 @@ sudo pmset -a ttyskeepawake 0         # Prevent remote login sessions from preve
 sudo pmset -a womp 0                  # Disable wake-on-magic-packet (wake-on-LAN)
 ```
 
-Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the mouse or press a key on the keyboard. The system should wake and the screen(s) should wake when using HibernateMode 3 and 25.
+Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the mouse or press a key on the keyboard. The system should wake and the screen(s) should wake when using HibernateMode 3 or 25.
 
 > [!NOTE]
 >
