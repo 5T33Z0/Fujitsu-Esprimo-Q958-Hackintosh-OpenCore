@@ -244,35 +244,28 @@ In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patche
 ### Modify Power Management Settings
 Open Terminal and enter the following commands, to adjust Power Management. If you don't want to use Hibernation, use `hibernatemode 3` instead:
 
-```
+```bash
 # Enable hibernatemode 25 (sleep to disk, power off RAM)
-
-sudo pmset -a hibernatemode 25 
+sudo pmset -a hibernatemode 25
 
 # Enable standby (required for hibernation to actually work)
-
 sudo pmset -a standby 1
 
-# Enable autopoweroff (transition to hibernation)
+# Set standby delays (time before entering hibernation)
+sudo pmset -a standbydelayhigh 900    # 15 minutes when battery > 50%
+sudo pmset -a standbydelaylow 900     # 15 minutes when battery < 50%
 
-sudo pmset -a autopoweroff 1
-
-# Set autopoweroff delay to 5 minutes (300 seconds)
-
-sudo pmset -a autopoweroffdelay 300
-
-# Set standby delays (time before entering standby/hibernation)
-
-sudo pmset -a standbydelayhigh 600    # 10 minutes when battery > 50%
-sudo pmset -a standbydelaylow 600     # 10 minutes when battery < 50%
+# Sleep timings (optional - adjust to preference)
+sudo pmset -a displaysleep 10         # Display sleeps after 10 minutes
+sudo pmset -a disksleep 10            # Hard disk sleeps after 10 minutes
+sudo pmset -a sleep 1                 # System sleeps after 1 minute of inactivity
 
 # Disable wake-causing features
-
-sudo pmset -a powernap 0              # Disable Power Nap (prevents background wake)
+sudo pmset -a powernap 0              # Disable Power Nap
 sudo pmset -a tcpkeepalive 0          # Prevent network from waking system
 sudo pmset -a proximitywake 0         # Disable wake when iPhone/iPad nearby
-sudo pmset -a ttyskeepawake 0         # Prevent remote login sessions from preventing sleep
-sudo pmset -a womp 0                  # Disable wake-on-magic-packet (wake-on-LAN)
+sudo pmset -a ttyskeepawake 0         # Prevent remote login from preventing sleep
+sudo pmset -a womp 0                  # Disable wake-on-LAN
 ```
 
 Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the mouse or press a key on the keyboard. The system should wake and the screen(s) should wake when using HibernateMode 3 or 25.
