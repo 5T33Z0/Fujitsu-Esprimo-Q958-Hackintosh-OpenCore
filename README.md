@@ -186,7 +186,8 @@ EFI
 ### Prepare EFI
 - Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
 - Extract it
-- Open the `config.plist` with [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases) 
+- Open the `config.plist` with [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases)
+- Enable Kernel/Quirks &rarr; `AppleXcpmCfgLock`
 - Go to `Misc/Tools` and set enable the `CFGLock` tool.
 - Next, go to `PlatformInfo/generic`. Press "Generate" to create Serials, MLB etc. (or use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 - Save the `config.plist`
@@ -209,6 +210,8 @@ Continue with the next section, "Disable CFG Lock"
 - Mount EFI partition and open your `config.plist`
 - Disable the `CFGLock` Tool (`Misc/Tools`)
 - Save your config and reboot
+
+:bulb: Once CFG Lock is disabled, you can disable the `AppleXcpmCfgLock` Quirk in your config.plist!
 
 > [!IMPORTANT]
 >
