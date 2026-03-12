@@ -43,7 +43,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 **Model**       | [Fujitsu Esprimo Q958](https://www.fujitsu.com/id/products/computing/pc/ap/desktops/esprimo-q958/)
 **Formfactor**  | Small Form Factor (Mini-PC)
 **Chipset**     | [Intel Q370](https://www.intel.com/content/www/us/en/products/sku/133282/intel-q370-chipset/specifications.html)
-**CPU**         | 9th Gen Intel® Core™ [i7-9700T](https://www.intel.com/content/www/us/en/products/sku/191048/intel-core-i79700t-processor-12m-cache-up-to-4-30-ghz/specifications.html) (Coffee Lake) 
+**CPU**         | 9th Gen Intel® Core™ [i7-9700T](https://www.intel.com/content/www/us/en/products/sku/191048/intel-core-i79700t-processor-12m-cache-up-to-4-30-ghz/specifications.html) (Coffee Lake, delidded) 
 **GPU**         | Intel UHD Graphics 630 
 **RAM**         | 32 GB DDR4 (2666 MHz)
 **Storage**     | WD Blue SN550 NVMe SSD       
