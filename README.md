@@ -1,6 +1,6 @@
 # Fujitsu Esprimo Q958 Mini Hackintosh OpenCore
 
-[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.7-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5_to_26.3b-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
+[![OpenCore](https://img.shields.io/badge/OpenCore-1.0.8-cyan.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest) ![MacOS](https://img.shields.io/badge/macOS-14.7.5_to_26.5-purple.svg) [![release](https://img.shields.io/badge/Download-latest-success.svg)](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases)
 
 <img src="https://github.com/user-attachments/assets/3fc086f2-1be3-4a90-83f9-efdc702d51d2" width="100%%" />
 
@@ -10,25 +10,28 @@
 - [About](#about)
 - [System Specs](#system-specs)
 - [What works?](#what-works)
-	- [Notable Features](#notable-features)
+  - [Notable Features](#notable-features)
 - [BIOS Settings](#bios-settings)
 - [EFI Folder Content](#efi-folder-content)
 - [Deployment](#deployment)
-	- [Prepare EFI](#prepare-efi)
-	- [Disable CFG Lock](#disable-cfg-lock)
-	- [macOS Installation](#macos-installation)
+  - [Prepare EFI](#prepare-efi)
+  - [Disable CFG Lock](#disable-cfg-lock)
+  - [macOS Installation](#macos-installation)
 - [Post-Install](#post-install)
-	- [Enable Intel WiFi in macOS Sequoia/Tahoe](#enable-intel-wifi-in-macos-sequoiatahoe)
-	- [Modify Power Management Settings](#modify-power-management-settings)
-	- [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-	- [Strengthen Security (optional)](#strengthen-security-optional)
-	- [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
-	- [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
+  - [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
+  - [Optional: Enabling `AirportItlwm.kext` in macOS Sequoia/Tahoe](#optional-enabling-airportitlwmkext-in-macos-sequoiatahoe)
+    - [Config Preparations](#config-preparations)
+    - [Applying Root Patches](#applying-root-patches)
+  - [Enabling Audio in macOS Tahoe](#enabling-audio-in-macos-tahoe)
+  - [Modify Power Management Settings](#modify-power-management-settings)
+  - [Strengthen Security (optional)](#strengthen-security-optional)
+  - [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
+  - [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
 - [Geekbench 5 Benchmarking Results](#geekbench-5-benchmarking-results)
-	- [CPU](#cpu)
-	- [iGPU](#igpu)
+  - [CPU](#cpu)
+  - [iGPU](#igpu)
 - [Maintenance](#maintenance)
-	- [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
+  - [Adding kext URLs to OCAT](#adding-kext-urls-to-ocat)
 - [Credits](#credits)
 
 ---
@@ -223,14 +226,32 @@ Continue with the next section, "Disable CFG Lock"
 ## Post-Install
 This section contains post-install-measures to enable features, work around issues and some optional settings.
 
-### Enable Intel WiFi in macOS Sequoia/Tahoe
+### Disable Gatekeeper (optional)
+Disable Gatekeeper since it blocks running 3rd party scripts and apps from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
-In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patches with either OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources.
+### Optional: Enabling `AirportItlwm.kext` in macOS Sequoia/Tahoe
+
+Currently, my EFI is configured to use `itlwm.kext` for WLAN since it doesn't rewquire root patching with OpenCore Legacy Patcher and works with any version of macOS up to Tahoe. The downside is that you need an additional app called [Heliport](https://github.com/joshcalvert47/HeliPort) to connect to accesspoints. 
+
+If you want use `Airportitlwm_Sequoia.kext` in macOS Sequoia/Tahoe, you have to apply root patches with OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources. 
+
+#### Config Preparations
+
+Prior to applying Root Patches, you have to adjust some config settings:
+
+- Mount your EFI System Partion
+- Open your config.plist
+- Change the following Settings:
+	- Kernel/Block: Set `com.apple.iokit.IOSkywalkFamily` to `true`
+	- Kernel/Add: Set `Itlwm.kext` to `false`
+	- Kernel/Add Set `AirportItlwm.kext` to `true
+
+#### Applying Root Patches
 
 - [Download the latest release of OCLP-Mod](https://github.com/laobamac/OCLP-Mod/releases)
 - Install and run OCLP-Mod
 - Click the top right button:<br> <img width="600" height="331" alt="patch01" src="https://github.com/user-attachments/assets/19dc7610-829c-4bd5-9e99-a0938331b50e" />
-- It should say "Intel" somewhere in the Chines text of the Patches that will be applied:<br><img width="603" height="332" alt="oclpmod_intel01" src="https://github.com/user-attachments/assets/f49ecc37-e644-4e67-851b-f54fce640935" />
+- It should say "Intel" somewhere in the Chinese text of the Patches that will be applied:<br><img width="603" height="332" alt="oclpmod_intel01" src="https://github.com/user-attachments/assets/f49ecc37-e644-4e67-851b-f54fce640935" />
 - Click the first button from the top to start root patching.
 - Additional files required for patching will be downloadded automatically:<br><img width="415" height="288" alt="oclpmod_intel02" src="https://github.com/user-attachments/assets/391d5440-d3f4-4629-9dbb-e13fe511cbdd" />
 - Once that's done, patching will commence:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
@@ -239,9 +260,15 @@ In order for Wi-Fi to work in macOS Sequoia/Tahoe, you have to apply root patche
 - Boot into macOS Sequoia/Tahoe
 - WiFi should work now, so should Audio (applies to macOS Tahoe only)
 
+For more detailed instuctions, check my [Guide](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/AirportItllwm_Sequoia.md).
+
 >[!IMPORTANT]
 >
 > Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an update for macOS is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
+
+### Enabling Audio in macOS Tahoe
+
+&rarr; There are 2 options to enable audio in macOS Tahoe. One is to apply Root Patches with OCLP Mod (as explained above) or by using VoodooHDA instead which doesn't require root patching. See [Re-enabling Audio in macOS Tahoe beta 2+](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md) for instructions.
 
 ### Modify Power Management Settings
 Open Terminal and enter the following commands, to adjust Power Management. If you don't want to use Hibernation, use `hibernatemode 3` instead:
@@ -275,9 +302,6 @@ Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the m
 > [!NOTE]
 >
 > For more configuration options, follow my [hibernation configuration guide](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
-
-### Disable Gatekeeper (optional)
-I disable Gatekeeper on all my systems by default, since it blocks running scripts from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
 ###  Strengthen Security (optional)
 In `config.plist`, navigate to `Misc/Security/SecureBootModel` and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4, it does not longer work correctly during install.
