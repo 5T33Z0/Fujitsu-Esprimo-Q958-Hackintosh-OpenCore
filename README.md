@@ -389,3 +389,4 @@ The next time, you check for kext updates in OCAT (enable the `Dev` option), the
 - benbaker76 for [**Hackintool**](https://github.com/benbaker76/Hackintool) (and all users who contributed framebuffer patches for it because it was a pita to get the Display Ports working)
 - Unknown for [**USBToolBox**](https://github.com/USBToolBox/tool)
 - Brumbaer for `CFGLock.efi`
+- Chris1111 for [VoodooHDA-Tahoe](https://github.com/chris1111/VoodooHDA-Tahoe)
