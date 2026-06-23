@@ -84,6 +84,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and even Tahoe on the Fuji
 - [x] USB Port Mapping via ACPI to maximize compatibility
 - [x] 3D Globe in Apple Maps.
 - [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
+- [x] Added file system support for Linux
 
 ## BIOS Settings
 
