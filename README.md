@@ -18,8 +18,8 @@
   - [Disable CFG Lock](#disable-cfg-lock)
   - [macOS Installation](#macos-installation)
 - [Post-Install](#post-install)
-  - [Disable Gatekeeper (optional)](#disable-gatekeeper-optional)
-  - [Optional: Enabling `AirportItlwm.kext` in macOS Sequoia/Tahoe](#optional-enabling-airportitlwmkext-in-macos-sequoiatahoe)
+  - [Disable Gatekeeper](#disable-gatekeeper)
+  - [Using `AirportItlwm` instead of `Itlwm`in macOS Sequoia/Tahoe (optional)](#using-airportitlwm-instead-of-itlwmin-macos-sequoiatahoe-optional)
     - [Config Preparations](#config-preparations)
     - [Applying Root Patches](#applying-root-patches)
   - [Enabling Audio in macOS Tahoe](#enabling-audio-in-macos-tahoe)
@@ -226,12 +226,12 @@ Continue with the next section, "Disable CFG Lock"
 ## Post-Install
 This section contains post-install-measures to enable features, work around issues and some optional settings.
 
-### Disable Gatekeeper (optional)
+### Disable Gatekeeper
 Disable Gatekeeper since it blocks running 3rd party scripts and apps from github etc. To do so, enter `sudo spctl --master-disable` in Terminal. Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
-### Optional: Enabling `AirportItlwm.kext` in macOS Sequoia/Tahoe
+### Using `AirportItlwm` instead of `Itlwm`in macOS Sequoia/Tahoe (optional)
 
-Currently, my EFI is configured to use `itlwm.kext` for WLAN since it doesn't rewquire root patching with OpenCore Legacy Patcher and works with any version of macOS up to Tahoe. The downside is that you need an additional app called [Heliport](https://github.com/joshcalvert47/HeliPort) to connect to accesspoints. 
+Currently, my EFI is configured to use `itlwm.kext` for WLAN since it doesn't rewquire root patching with OpenCore Legacy Patcher and works with any version of macOS up to Tahoe. The downsides are it requires an additional app called [Heliport](https://github.com/joshcalvert47/HeliPort) to connect to accesspoints and that you can't use WLAN during macOS setup. 
 
 If you want use `Airportitlwm_Sequoia.kext` in macOS Sequoia/Tahoe, you have to apply root patches with OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources. 
 
