@@ -85,7 +85,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu E
 - [x] USB Port Mapping via ACPI to maximize compatibility
 - [x] 3D Globe in Apple Maps.
 - [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
-- [x] Added file system support for Linux
+- [x] Added file system support for Linux ([How to add a distro icon to the bootpicker](/Docs/Linux_Icon_OpenCanopy.md))
 
 ## BIOS Settings
 
