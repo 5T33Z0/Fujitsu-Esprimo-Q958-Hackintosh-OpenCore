@@ -72,7 +72,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu E
 - [x] USB port mapping (USB 2, USB 3.1, USB C, Bluetooth)
 - [x] Ethernet
 - [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
-- [x] Intel Wi-Fi
+- [x] Intel Wi-Fi (no root patches required)
 - [x] Bluetooth
 - [x] Sleep and Wake
 
@@ -183,8 +183,8 @@ EFI
     ├── Resources (NOTE: shows sub-folders only, no files)
     │   ├── Font
     │   └── Image
-    │       └── Acidanthera
-    │       │   └── GoldenGate
+    │       └── HJebbour
+    │       │   └── GoldenGateExt
     │       └── Label
     └── config.plist
 ```
