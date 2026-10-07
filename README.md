@@ -20,14 +20,12 @@
   - [macOS Installation](#macos-installation)
 - [Post-Install](#post-install)
   - [Disable Gatekeeper](#disable-gatekeeper)
-  - [Using `AirportItlwm` instead of `Itlwm`in macOS Sequoia/Tahoe (optional)](#using-airportitlwm-instead-of-itlwmin-macos-sequoiatahoe-optional)
-    - [Config Preparations](#config-preparations)
-    - [Applying Root Patches](#applying-root-patches)
-  - [Enabling Audio in macOS Tahoe](#enabling-audio-in-macos-tahoe)
-  - [Modify Power Management Settings](#modify-power-management-settings)
-  - [Strengthen Security (optional)](#strengthen-security-optional)
+  - [Enable Audio in macOS Tahoe](#enable-audio-in-macos-tahoe)
+  - [Adjust Power Management Settings](#adjust-power-management-settings)
   - [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
   - [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
+  - [Using `Itlwm` instead of `AirportItlwm` (optional)](#using-itlwm-instead-of-airportitlwm-optional)
+  - [Strengthen Security (optional)](#strengthen-security-optional)
 - [Geekbench 5 Benchmarking Results](#geekbench-5-benchmarking-results)
   - [CPU](#cpu)
   - [iGPU](#igpu)
@@ -39,6 +37,8 @@
 
 ## About
 OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu Esprimo Q958 Small Form Factor PC. As far as I am aware, this is the first OpenCore EFI for this system. I am using it daily as my primary office/streaming purposes with a 4k display. It's a quite capable and powerful mini-pc with a true 300-series chipset. It can be maxed-out with an i9-9900T (8 Cores 16 Threads) and 64 Gigs of RAM.
+
+---
 
 ## System Specs
 
@@ -58,6 +58,8 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu E
 **BIOS**        | [R1.38.0](https://support.ts.fujitsu.com/IndexDownload.asp?lng=de&OpenTab=) (08/29/22024)
 **SMBIOS**      | `iMac19,1` 
 **Support Files** | [Downloads for Esprimo Q958](https://support.ts.fujitsu.com/IndexDownload.asp?lng=en&OpenTab=)
+
+---
 
 ## What works?
 
@@ -86,6 +88,8 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu E
 - [x] 3D Globe in Apple Maps.
 - [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
 - [x] Added file system support for Linux ([How to add a distro icon to the bootpicker](/Docs/Linux_Icon_OpenCanopy.md))
+
+---
 
 ## BIOS Settings
 
@@ -125,6 +129,8 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 		- Windows Boot Manager 
 </details>
 
+---
+
 ## EFI Folder Content
 
 <details>
@@ -156,6 +162,7 @@ EFI
     │   ├── AdvancedMap.kext (macOS 12+)
     │   ├── AirportItlwm_Sequoia.kext
     │   ├── AirportItlwm_Sonoma.kext
+    │   ├── AirportItlwm_Tahoe.kext
     │   ├── AMFIPass.kext (macOS 12+)
     │   ├── AppleALC.kext
     │   ├── BlueToolFixup.kext (macOS 12+)
@@ -164,8 +171,6 @@ EFI
     │   ├── IntelBluetoothFirmware.kext
     │   ├── IntelBTPatcher.kext
     │   ├── IntelMausiEthernet.kext
-    │   ├── IO80211FamilyLegacy.kext (macOS 14+)
-    │   ├── IOSkywalkFamily.kext (macOS 14+)
     │   ├── itlwm.kext
     │   ├── Lilu.kext
     │   ├── NVMeFix.kext
@@ -184,6 +189,8 @@ EFI
     └── config.plist
 ```
 </details>
+
+---
 
 ## Deployment
 
@@ -225,6 +232,8 @@ Continue with the next section, "Disable CFG Lock"
 * Put the EFI folder at the root of a FAT32-formatted USB flash drive. You can boot OpenCore from it
 * To create a macOS USB installer, follow Dortania’s [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/#making-the-installer)
 
+---
+
 ## Post-Install
 This section contains post-install-measures to enable features, work around issues and some optional settings.
 
@@ -236,48 +245,11 @@ sudo spctl --master-disable
 ```
 Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
-### Using `AirportItlwm` instead of `Itlwm`in macOS Sequoia/Tahoe (optional)
-
-Currently, my EFI is configured to use `itlwm.kext` for WLAN since it doesn't rewquire root patching with OpenCore Legacy Patcher and works with any version of macOS up to Tahoe. The downsides are it requires an additional app called [Heliport](https://github.com/joshcalvert47/HeliPort) to connect to accesspoints and that you can't use WLAN during macOS setup. 
-
-If you want use `Airportitlwm_Sequoia.kext` in macOS Sequoia/Tahoe, you have to apply root patches with OCLP Mod. Make sure to connect the system via LAN so OCLP-Mod can download additionally required ressources. 
-
-#### Config Preparations
-
-Prior to applying Root Patches, you have to adjust some config settings:
-
-- Mount your EFI System Partion
-- Open your config.plist
-- Change the following Settings:
-	- Kernel/Block: Set `com.apple.iokit.IOSkywalkFamily` to `true`
-	- Kernel/Add: Set `Itlwm.kext` to `false`
-	- Kernel/Add Set `AirportItlwm.kext` to `true
-
-#### Applying Root Patches
-
-- [Download the latest release of OCLP-Mod](https://github.com/laobamac/OCLP-Mod/releases)
-- Install and run OCLP-Mod
-- Click the top right button:<br> <img width="600" height="331" alt="patch01" src="https://github.com/user-attachments/assets/19dc7610-829c-4bd5-9e99-a0938331b50e" />
-- It should say "Intel" somewhere in the Chinese text of the Patches that will be applied:<br><img width="603" height="332" alt="oclpmod_intel01" src="https://github.com/user-attachments/assets/f49ecc37-e644-4e67-851b-f54fce640935" />
-- Click the first button from the top to start root patching.
-- Additional files required for patching will be downloadded automatically:<br><img width="415" height="288" alt="oclpmod_intel02" src="https://github.com/user-attachments/assets/391d5440-d3f4-4629-9dbb-e13fe511cbdd" />
-- Once that's done, patching will commence:<br> ![intel_spoof06](https://github.com/user-attachments/assets/ced653f7-0807-4aef-82cb-eabf35b08884)
-- Reboot the system
-- Reset NVRAM
-- Boot into macOS Sequoia/Tahoe
-- WiFi should work now, so should Audio (applies to macOS Tahoe only)
-
-For more detailed instuctions, check my [Guide](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/AirportItllwm_Sequoia.md).
-
->[!IMPORTANT]
->
-> Once root patches are applied, the security seal of the system volume will be broken. And once it is broken, the complete macOS version will be downloaded every time an update for macOS is available. The workaround would be to revert root patches *before* installing updates and then use LAN to to download and install incremental updates. But there's a chance that applying incremental updates will fail. In this case, the full installer will be downloaded on the next attempt.
-
-### Enabling Audio in macOS Tahoe
+### Enable Audio in macOS Tahoe
 
 There are 3 options to enable audio in macOS Tahoe see &rarr; [Re-enabling Audio in macOS Tahoe beta 2+](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md) for details.
 
-### Modify Power Management Settings
+### Adjust Power Management Settings
 Open Terminal and enter the following commands, to adjust Power Management. If you don't want to use Hibernation, use `hibernatemode 3` instead:
 
 ```bash
@@ -310,9 +282,6 @@ Test sleep and wake by entering `pmset sleepnow`. Wait 30 seconds and move the m
 >
 > For more configuration options, follow my [hibernation configuration guide](https://github.com/5T33Z0/OC-Little-Translated/tree/main/Content/04_Fixing_Sleep_and_Wake_Issues/Changing_Hibernation_Modes) properly.
 
-###  Strengthen Security (optional)
-In `config.plist`, navigate to `Misc/Security/SecureBootModel` and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4, it does not longer work correctly during install.
-
 ### Enable brightness control for external displays (optional)
 There's a new app called [**MonitorControl**](https://github.com/MonitorControl/MonitorControl) which allows controlling the brightness and contrast of attached external displays right from the menu bar and/or keyboard.
 
@@ -323,6 +292,15 @@ But if you don't, you can add an Eject button to the menu bar:
 
 - Open Finder and navigate to: `System/Library/CoreServices/Menu Extras`
 - Double-click on `Eject.menu`. This adds the Eject button icon to the Menu Bar: <br>![Eject](https://github.com/user-attachments/assets/9ed29614-d4e8-48f6-a2a1-93b48a6d36da)
+
+### Using `Itlwm` instead of `AirportItlwm` (optional)
+
+Currently, my EFI is configured to use the new fork of `AirportItlwm` for WLAN which doesn't require root patches any longer. If you want to use `Itlwm.kext` instead, disable the `AirportItlwm` kext and enable `Itlwm.kext` instead. Additionally, download the [Heliport App](https://github.com/joshcalvert47/HeliPort) to connect to Wi-Fi access points
+
+###  Strengthen Security (optional)
+In `config.plist`, navigate to `Misc/Security/SecureBootModel` and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4, it does not longer work correctly during install.
+
+---
 
 ## Geekbench 5 Benchmarking Results
 
@@ -362,6 +340,8 @@ Vulkan | OpenCL |
 :----:|:------:|
 [**6657**](https://browser.geekbench.com/v5/compute/6925530) | [6380](https://browser.geekbench.com/v5/compute/6925529) 
 
+---
+
 ## Maintenance
 
 ### Adding kext URLs to OCAT
@@ -386,6 +366,8 @@ OCAT does not contain all the links to kext repos used in my EFI folder. So in o
 6. Save the file
 
 The next time, you check for kext updates in OCAT (enable the `Dev` option), the color of the squares in front of the kexts above will no longer be grey (not found) but either red (outdated) or green (up to date). All the kexts coming from the OCLP repo can't be fetched automatically, so they will remain grey.
+
+---
 
 ## Credits
 - Acidanthera for the [**OpenCore**](https://github.com/acidanthera/OpenCorePkg) Bootloader
