@@ -192,45 +192,48 @@ EFI
 
 ---
 
-## Deployment
+## Configuration Preparation and Deployment
 
-### Prepare EFI
-- Download the latest OC EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section
-- Extract it
-- Open the `config.plist` with [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases)
-- Enable Kernel/Quirks &rarr; `AppleXcpmCfgLock`
-- Go to `Misc/Tools` and set enable the `CFGLock` tool.
-- Next, go to `PlatformInfo/generic`. Press "Generate" to create Serials, MLB etc. (or use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
-- Save the `config.plist`
-- Copy the EFI folder to a FAT32 formatted USB flash drive and reboot
-- Press <kbd>F12</kbd> to enter the BIOS Boot Menu
-- Select the USB Flash Drive and press <kbd>Enter</kbd> to run OpenCore
+### Prepare `config.plist`
 
-Continue with the next section, "Disable CFG Lock"
+1. Download the latest EFI folder from the [Releases](https://github.com/5T33Z0/Fujitsu-Esprimo-Q958-Hackintosh-OpenCore/releases) section and extract it.
+2. Open `config.plist` in [OCAT](https://github.com/ic005k/OCAuxiliaryTools/releases).
+3. Go to `Kernel/Quirks` and enable `AppleXcpmCfgLock`.
+4. Go to `Misc/Tools` and enable `CFGLock.efi`.
+5. Navigate to `PlatformInfo/Generic` and click **Generate** to generate your SMBIOS data (serial number, MLB, SystemUUID, etc.). Alternatively, use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS).
+6. Save `config.plist`.
 
-> [!NOTE]
->
-> When using macOS Sequoia or older, disable/delete the `unfairvgva=4` boot-arg if you want to use AppleTV+ or Apple Music.
+### Optional Configuration
+
+- **FileVault on macOS Tahoe:** Enable `apfs_aligned.efi` under `UEFI/Drivers` and disable `EnableJumpstart` under `UEFI/APFS`.
+- **Linux boot support:** Enable `OpenLinuxBoot.efi`, `ext4_x64.efi`, and `btrfs_x64.efi` under `UEFI/Drivers`.
+- **Apple Music and Apple TV+:** When using macOS Sequoia or older, remove or disable the `unfairvgva=4` boot argument if you want to use these services.
+
+### Boot OpenCore
+
+1. Copy the prepared `EFI` folder to the root of a FAT32-formatted USB flash drive.
+2. Reboot and press <kbd>F12</kbd> to enter the BIOS boot menu.
+3. Select the USB flash drive and press <kbd>Enter</kbd> to boot OpenCore.
+4. Continue with [Disable CFG Lock](#disable-cfg-lock).
 
 ### Disable CFG Lock
-- In the OC Bootmenu, press space bar to show hidden tools
-- Select `CFGLock.efi` and press <kbd>Enter</kbd> to run it
-- Follow the on-screen Instructions to disable CFGLock (set it to `0`)
-- Quit the tool
-- Boot into macOS
-- Mount EFI partition and open your `config.plist`
-- Disable the `CFGLock` Tool (`Misc/Tools`)
-- Save your config and reboot
 
-:bulb: Once CFG Lock is disabled, you can disable the `AppleXcpmCfgLock` Quirk in your config.plist!
+1. In the OpenCore boot picker, press the space bar to reveal hidden tools.
+2. Select `CFGLock.efi` and press <kbd>Enter</kbd> to launch it.
+3. Follow the on-screen instructions to disable CFG Lock by setting its value to `0`.
+4. Exit the tool and boot into macOS.
+5. Mount the EFI partition and open `config.plist` in OCAT.
+6. Disable the `AppleXcpmCfgLock` quirk in `Kernel/Quirks`.
+7. Disable `CFGLock.efi` under `Misc/Tools` and save the configuration.
+8. Reboot.
 
 > [!IMPORTANT]
->
-> Disabling CFG Lock this way is not a persistent. Once you reset the BIOS back to defaults, you have to run `CFGLock.efi` again to disable it – otherwise macOS won't boot without the `AppleXcpmCfgLock` Quirk.
+> 
+> This method does not permanently disable CFG Lock. If you reset the BIOS to its defaults, you must run `CFGLock.efi` again. Otherwise, macOS may fail to boot if the `AppleXcpmCfgLock` quirk is disabled.
 
 ### macOS Installation
-* Put the EFI folder at the root of a FAT32-formatted USB flash drive. You can boot OpenCore from it
-* To create a macOS USB installer, follow Dortania’s [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/#making-the-installer)
+
+To create a macOS USB installer, follow Dortania's [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/#making-the-installer). The prepared EFI folder can then be used to boot the installer from the USB drive.
 
 ---
 
