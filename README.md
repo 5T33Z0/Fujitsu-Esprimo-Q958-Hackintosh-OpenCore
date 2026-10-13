@@ -15,7 +15,9 @@
 - [BIOS Settings](#bios-settings)
 - [EFI Folder Content](#efi-folder-content)
 - [Deployment](#deployment)
-  - [Prepare EFI](#prepare-efi)
+  - [Prepare `config.plist`](#prepare-configplist)
+  - [Optional Configuration](#optional-configuration)
+  - [Boot OpenCore](#boot-opencore)
   - [Disable CFG Lock](#disable-cfg-lock)
   - [macOS Installation](#macos-installation)
 - [Post-Install](#post-install)
@@ -192,7 +194,7 @@ EFI
 
 ---
 
-## Configuration Preparation and Deployment
+## Deployment
 
 ### Prepare `config.plist`
 
