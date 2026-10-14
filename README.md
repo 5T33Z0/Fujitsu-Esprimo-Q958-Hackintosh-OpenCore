@@ -83,7 +83,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu E
 > This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OCLP-Mod. 
 
 ### Notable Features
-
+- [x] **Working audio in macOS Tahoe out of the box** — No root patches required
 - [x] Hibernation fully working (Modes 3 and 25)
 - [x] All 3 Graphics ports are working (`con0` = DVI, `con1` = DP1 (bottom), `con2` = DP2 (Top))
 - [x] USB Port Mapping via ACPI to maximize compatibility
