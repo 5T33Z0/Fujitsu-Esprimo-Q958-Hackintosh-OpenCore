@@ -49,7 +49,7 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu E
 **Model**       | [Fujitsu Esprimo Q958](https://www.fujitsu.com/id/products/computing/pc/ap/desktops/esprimo-q958/)
 **Formfactor**  | Small Form Factor (Mini-PC)
 **Chipset**     | [Intel Q370](https://www.intel.com/content/www/us/en/products/sku/133282/intel-q370-chipset/specifications.html)
-**CPU**         | 9th Gen Intel® Core™ [i7-9700T](https://www.intel.com/content/www/us/en/products/sku/191048/intel-core-i79700t-processor-12m-cache-up-to-4-30-ghz/specifications.html) (Coffee Lake, delidded) 
+**CPU**         | Intel Core [i7-9700T](https://www.intel.com/content/www/us/en/products/sku/191048/intel-core-i79700t-processor-12m-cache-up-to-4-30-ghz/specifications.html) (Coffee Lake, delidded) <br> Device-ID: `3E98`
 **GPU**         | Intel UHD Graphics 630 
 **RAM**         | 32 GB DDR4 (2666 MHz)
 **Storage**     | WD Blue SN550 NVMe SSD       
@@ -141,58 +141,70 @@ Begin by loading "Optimized Defaults" (under Save & Exit &rarr; "Restore Default
 <details>
 <summary><strong>Click to show</strong></summary><br>
 
-
 ```
 EFI
 ├── BOOT
-│   └── BOOTx64.efi
+│   └── BOOTx64.efi
+├── Changelog.md
 └── OC
     ├── ACPI
-    │   ├── DMAR.aml
-    │   ├── SSDT-EC.aml
-    │   ├── SSDT-MCHC.aml
-    │   ├── SSDT-OSDW.aml
-    │   ├── SSDT-PLUG.aml
-    │   ├── SSDT-PMC.aml
-    │   ├── SSDT-RTCAWAC
-    │   ├── SSDT-SBUS.aml
-    │   ├── SSDT-USBX.aml
-    │   └── SSDT-XHUB.aml
+    │   ├── DMAR.aml
+    │   ├── SSDT-EC.aml
+    │   ├── SSDT-MCHC.aml
+    │   ├── SSDT-OSDW.aml
+    │   ├── SSDT-PLUG.aml
+    │   ├── SSDT-PMC.aml
+    │   ├── SSDT-RTCAWAC.aml
+    │   ├── SSDT-SBUS.aml
+    │   ├── SSDT-USBX.aml
+    │   └── SSDT-XHUB.aml
+    ├── config.plist
     ├── Drivers
-    │   ├── HfsPlus.efi
-    │   ├── OpenCanopy.efi
-    │   ├── OpenRuntime.efi
-    │   └── ResetNvramEntry.efi
+    │   ├── apfs_aligned.efi
+    │   ├── btrfs_x64.efi
+    │   ├── ext4_x64.efi
+    │   ├── HfsPlus.efi
+    │   ├── OpenCanopy.efi
+    │   ├── OpenLinuxBoot.efi
+    │   ├── OpenRuntime.efi
+    │   └── ResetNvramEntry.efi
     ├── Kexts
-    │   ├── AdvancedMap.kext (macOS 12+)
-    │   ├── AirportItlwm_Sequoia.kext
-    │   ├── AirportItlwm_Sonoma.kext
-    │   ├── AirportItlwm_Tahoe.kext
-    │   ├── AMFIPass.kext (macOS 12+)
-    │   ├── AppleALC.kext
-    │   ├── BlueToolFixup.kext (macOS 12+)
-    │   ├── CPUFriend.kext
-    │   ├── CPUFriendDataProvider.kext
-    │   ├── IntelBluetoothFirmware.kext
-    │   ├── IntelBTPatcher.kext
-    │   ├── IntelMausiEthernet.kext
-    │   ├── itlwm.kext
-    │   ├── Lilu.kext
-    │   ├── NVMeFix.kext
-    │   ├── RestrictEvents.kext (macOS 11+)
-    │   ├── SMCProcessor.kext
-    │   ├── SMCSuperIO.kext
-    │   ├── VirtualSMC.kext
-    │   └── WhateverGreen.kext
+    │   ├── AdvancedMap.kext
+    │   ├── AirportItlwm_Sequoia.kext
+    │   ├── AirportItlwm_Sonoma.kext
+    │   ├── AirportItlwm_Tahoe.kext
+    │   ├── AMFIPass.kext
+    │   ├── AppleALC.kext
+    │   ├── BlueToolFixup.kext
+    │   ├── CPUFriend.kext
+    │   ├── CPUFriendDataProvider.kext
+    │   ├── iBridged.kext
+    │   ├── IntelBluetoothFirmware.kext
+    │   ├── IntelBTPatcher.kext
+    │   ├── IntelMausiEthernet.kext
+    │   ├── itlwm.kext
+    │   ├── Lilu.kext
+    │   ├── NVMeFix.kext
+    │   ├── RestrictEvents.kext
+    │   ├── SimpleHDA.kext
+    │   ├── SMCProcessor.kext
+    │   ├── SMCSuperIO.kext
+    │   ├── VirtualSMC.kext
+    │   ├── VPXFixup.kext
+    │   └── WhateverGreen.kext
     ├── OpenCore.efi
-    ├── Resources (NOTE: shows sub-folders only, no files)
-    │   ├── Font
-    │   └── Image
-    │       └── HJebbour
-    │       │   └── GoldenGateExt
-    │       └── Label
-    └── config.plist
+    ├── Resources
+    │   ├── Audio
+    │   ├── Font
+    │   └── Image
+    │   │   └── HJebbour
+    │   │       └── GoldenGateExt
+    │   └── Label
+    └── Tools
+        └── CFGLock.efi
 ```
+
+
 </details>
 
 ---
