@@ -63,33 +63,36 @@ OpenCore EFI folder for running macOS Sonoma, Sequoia and Tahoe on the Fujitsu E
 
 ---
 
-## What works?
+## ✨ What works?
 
-- [x] OS:
-  - [x] macOS Sonoma+
-  - [x] Windows 10+
-- [x] iGPU
-- [x] SATA drive
-- [x] NVME drive
-- [x] USB port mapping (USB 2, USB 3.1, USB C, Bluetooth)
-- [x] Ethernet
-- [x] Audio (Line-out, Headphone, Mic, Integrated Speaker)
-- [x] Intel Wi-Fi (no root patches required)
-- [x] Bluetooth
-- [x] Sleep and Wake
+- [x] 💻 **Operating Systems**
+  - [x] 🍎 macOS Sonoma+
+  - [x] 🪟 Windows 10+
+  - [x] 🐧 Linux
+- [x] 🖥️ iGPU
+- [x] 💾 SATA drive
+- [x] ⚡ NVMe drive
+- [x] 🔌 USB port mapping (USB 2, USB 3.1, USB-C, Bluetooth)
+- [x] 🌐 Ethernet
+- [x] 🔊 Audio (Line-out, Headphone, Mic, Integrated Speaker)
+- [x] 📶 Intel Wi-Fi (no root patches required)
+- [x] 🔵 Bluetooth
+- [x] 💤 Sleep and Wake
 
 > [!IMPORTANT]
-> 
-> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot support but iServices won't work unless root patches are applied in Post-Install with OCLP-Mod. 
+>
+> This EFI uses `AirportItlwm.kext` for WLAN. It supports Handoff, Universal Clipboard, Location Services and Instant Hotspot, but iServices won't work unless root patches are applied in Post-Install with OCLP-Mod.
 
-### Notable Features
-- [x] **Working audio in macOS Tahoe out of the box** — No root patches required
-- [x] Hibernation fully working (Modes 3 and 25)
-- [x] All 3 Graphics ports are working (`con0` = DVI, `con1` = DP1 (bottom), `con2` = DP2 (Top))
-- [x] USB Port Mapping via ACPI to maximize compatibility
-- [x] 3D Globe in Apple Maps.
-- [x] Optimized EFI folder size by using slimmed kexts (11 MB in total instead of the default 54 MB)
-- [x] Added file system support for Linux ([How to add a distro icon to the bootpicker](/Docs/Linux_Icon_OpenCanopy.md))
+### ⭐ Notable Features
+
+- [x] 🔊 **Working audio in macOS Tahoe out of the box** — No root patches required
+- [x] 🎬 Improved video performance thanks to [VPXFixUp](https://github.com/medkintos/VPXFixUp) kext
+- [x] 💤 Hibernation fully working (Modes 3 and 25)
+- [x] 🖥️ All 3 graphics ports working (`con0` = DVI, `con1` = DP1 (bottom), `con2` = DP2 (top))
+- [x] 🔌 USB port mapping via ACPI to maximize compatibility
+- [x] 🌍 3D Globe in Apple Maps
+- [x] 📦 Optimized EFI folder size using slimmed kexts (11 MB instead of the default 54 MB)
+- [x] 🐧 Added filesystem support for Linux ([How to add a distro icon to the boot picker](/Docs/Linux_Icon_OpenCanopy.md))
 
 ---
 
