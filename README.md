@@ -22,12 +22,10 @@
   - [macOS Installation](#macos-installation)
 - [Post-Install](#post-install)
   - [Disable Gatekeeper](#disable-gatekeeper)
-  - [Enable Audio in macOS Tahoe](#enable-audio-in-macos-tahoe)
   - [Adjust Power Management Settings](#adjust-power-management-settings)
   - [Enable brightness control for external displays (optional)](#enable-brightness-control-for-external-displays-optional)
   - [Add Eject button for optical drive to Menu Bar (optional)](#add-eject-button-for-optical-drive-to-menu-bar-optional)
   - [Using `Itlwm` instead of `AirportItlwm` (optional)](#using-itlwm-instead-of-airportitlwm-optional)
-  - [Strengthen Security (optional)](#strengthen-security-optional)
 - [Geekbench 5 Benchmarking Results](#geekbench-5-benchmarking-results)
   - [CPU](#cpu)
   - [iGPU](#igpu)
@@ -265,10 +263,6 @@ sudo spctl --master-disable
 ```
 Disabling Gatekeeper in macOS Sequoia and Tahoe requires [additional steps](https://github.com/5T33Z0/OCLP4Hackintosh/tree/main/Guides/Disable_Gatekeeper.md).
 
-### Enable Audio in macOS Tahoe
-
-There are 3 options to enable audio in macOS Tahoe see &rarr; [Re-enabling Audio in macOS Tahoe beta 2+](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Enable_Features/Audio_Tahoe.md) for details.
-
 ### Adjust Power Management Settings
 Open Terminal and enter the following commands, to adjust Power Management. If you don't want to use Hibernation, use `hibernatemode 3` instead:
 
@@ -316,9 +310,6 @@ But if you don't, you can add an Eject button to the menu bar:
 ### Using `Itlwm` instead of `AirportItlwm` (optional)
 
 Currently, my EFI is configured to use the new fork of `AirportItlwm` for WLAN which doesn't require root patches any longer. If you want to use `Itlwm.kext` instead, disable the `AirportItlwm` kext and enable `Itlwm.kext` instead. Additionally, download the [Heliport App](https://github.com/joshcalvert47/HeliPort) to connect to Wi-Fi access points
-
-###  Strengthen Security (optional)
-In `config.plist`, navigate to `Misc/Security/SecureBootModel` and change it to: `Default`. But you may have to disable it when updating macOS, otherwise the installer might crash. Ever since the release of macOS Sonoma 14.4, it does not longer work correctly during install.
 
 ---
 
